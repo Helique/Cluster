@@ -1,0 +1,25 @@
+{
+  "name": "cluster_engine",
+  "version": "1.0.0",
+  "description": "A graph based social app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Helique/Cluster.git"
+  },
+  "private": true,
+  "author": "David Bernadett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Helique/Cluster/issues"
+  },
+  "homepage": "https://github.com/Helique/Cluster#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "nunjucks": "^2.3.0"
+  }
+}
