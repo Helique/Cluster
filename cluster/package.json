@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Helique/Cluster#readme",
   "dependencies": {
     "express": "^4.13.4",
-    "nunjucks": "^2.3.0"
+    "nunjucks": "^2.3.0",
+    "multer": "1.1.0"
   }
 }
