@@ -1,0 +1,817 @@
+OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+SECURITY:NONE
+ENCODING:USASCII
+CHARSET:1252
+COMPRESSION:NONE
+OLDFILEUID:NONE
+NEWFILEUID:NONE
+
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+        <MESSAGE>Signon OK</MESSAGE>
+      </STATUS>
+      <DTSERVER>20160626162412.559[-7:PDT]</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <DTPROFUP>20140910145300.000</DTPROFUP>
+      <DTACCTUP>20160627120000.000</DTACCTUP>
+      <FI>
+        <ORG>Credit Union</ORG>
+        <FID>321174770</FID>
+      </FI>
+      <USERS.TYPE>3</USERS.TYPE>
+      <USERS.PRIMACN>292261</USERS.PRIMACN>
+      <INTU.BID>2916</INTU.BID>
+      <INTU.USERID>SCCU292261</INTU.USERID>
+      <USERS.DTLASTLOGIN>20160626161835.998</USERS.DTLASTLOGIN>
+      <USERS.PRIMARYOWNER>1</USERS.PRIMARYOWNER>
+      <USERS.WEBINJECTION>
+        <FORENSICSID>120008405</FORENSICSID>
+      </USERS.WEBINJECTION>
+    </SONRS>
+  </SIGNONMSGSRSV1>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <TRNUID>5f65af6b-4116-4b99-8f57-db31d8dd4287</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+        <MESSAGE>Statement OK</MESSAGE>
+      </STATUS>
+      <STMTRS>
+        <CURDEF>USD</CURDEF>
+        <BANKACCTFROM>
+          <BANKID>321174770</BANKID>
+          <ACCTID>292261=5</ACCTID>
+          <ACCTTYPE>CHECKING</ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART>20160530000000</DTSTART>
+          <DTEND>20160627120000.000</DTEND>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160528120000.000</DTPOSTED>
+            <DTUSER>20160531120000.000</DTUSER>
+            <TRNAMT>-5.94</TRNAMT>
+            <FITID>64069_3554</FITID>
+            <NAME>CA ISLA VISTA SNOWFLAKE</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA SNOWFLAKE USSNOWFLAKE</MEMO>
+            <USERS.STMT>
+              <TRNBAL>101.63</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>40001</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160531120000.000</DTPOSTED>
+            <DTUSER>20160531120000.000</DTUSER>
+            <TRNAMT>-10.3</TRNAMT>
+            <FITID>64069_3557</FITID>
+            <NAME>CA SANTA BARBARA SPUDNUTS</NAME>
+            <MEMO>Withdrawal  @ CA SANTA BARBARA SPUDNUTS DONUTS USSPUDNUTS DONUTS</MEMO>
+            <USERS.STMT>
+              <TRNBAL>91.33</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>11850</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20160531120000.000</DTPOSTED>
+            <DTUSER>20160531120000.000</DTUSER>
+            <TRNAMT>0</TRNAMT>
+            <FITID>64069_3575</FITID>
+            <NAME>Transfer</NAME>
+            <MEMO>Draft Maint. Fee  MISCELLANEOUS FEES 1 @ $8.00 before discount</MEMO>
+            <USERS.STMT>
+              <TRNBAL>91.33</TRNBAL>
+              <TRNTYPE>DRAFTWDL</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIV</TRNTYPE>
+            <DTPOSTED>20160531120000.000</DTPOSTED>
+            <DTUSER>20160531120000.000</DTUSER>
+            <TRNAMT>0</TRNAMT>
+            <FITID>64069_3578</FITID>
+            <NAME>Dividend</NAME>
+            <MEMO>Dividend Through date: 31MAY2016</MEMO>
+            <USERS.STMT>
+              <TRNBAL>91.33</TRNBAL>
+              <TRNTYPE>DIV</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160601120000.000</DTPOSTED>
+            <DTUSER>20160601120000.000</DTUSER>
+            <TRNAMT>-8.91</TRNAMT>
+            <FITID>64070_3581</FITID>
+            <NAME>CA ISLA VISTA BLAZE PIZZA</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA BLAZE PIZZA USBLAZE PIZZA</MEMO>
+            <USERS.STMT>
+              <TRNBAL>82.42</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>347</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160601120000.000</DTPOSTED>
+            <DTUSER>20160601120000.000</DTUSER>
+            <TRNAMT>-8.9</TRNAMT>
+            <FITID>64070_3583</FITID>
+            <NAME>CA SANTA BARBARA WAHOOS FISH</NAME>
+            <MEMO>Withdrawal  @ CA SANTA BARBARA WAHOOS FISH TACO UCUSWAHOOS FISH TACO</MEMO>
+            <USERS.STMT>
+              <TRNBAL>73.52</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>91020</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160602120000.000</DTPOSTED>
+            <DTUSER>20160602120000.000</DTUSER>
+            <TRNAMT>-10</TRNAMT>
+            <FITID>64071_3586</FITID>
+            <NAME>NY 646 397 8051</NAME>
+            <MEMO>Withdrawal  @ NY 646 397 8051 DIGITALOCEAN.COM USDIGITALOCEAN.COM</MEMO>
+            <USERS.STMT>
+              <TRNBAL>63.52</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>82742</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160602120000.000</DTPOSTED>
+            <DTUSER>20160602120000.000</DTUSER>
+            <TRNAMT>-4.99</TRNAMT>
+            <FITID>64071_3589</FITID>
+            <NAME>CA SANTA BARBARA UCSB UNIV CNTR</NAME>
+            <MEMO>Withdrawal  @ CA SANTA BARBARA UCSB UNIV CNTR ARB USUCSB UNIV CNTR A</MEMO>
+            <USERS.STMT>
+              <TRNBAL>58.53</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>1922</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160603120000.000</DTPOSTED>
+            <DTUSER>20160602120000.000</DTUSER>
+            <TRNAMT>-10.15</TRNAMT>
+            <FITID>64071_3592</FITID>
+            <NAME>CA GOLETA ROSARITO FRESH MEX</NAME>
+            <MEMO>Withdrawal  @ CA GOLETA ROSARITO FRESH MEX USROSARITO FRESH M</MEMO>
+            <USERS.STMT>
+              <TRNBAL>48.38</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>21109</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160603120000.000</DTPOSTED>
+            <DTUSER>20160603120000.000</DTUSER>
+            <TRNAMT>-7.94</TRNAMT>
+            <FITID>64072_3594</FITID>
+            <NAME>CA SANTA BARBARA SUBWAY</NAME>
+            <MEMO>Withdrawal  @ CA SANTA BARBARA SUBWAY 00536USSUBWAY 00</MEMO>
+            <USERS.STMT>
+              <TRNBAL>40.44</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>13328</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160603120000.000</DTPOSTED>
+            <DTUSER>20160603120000.000</DTUSER>
+            <TRNAMT>-4.47</TRNAMT>
+            <FITID>64072_3596</FITID>
+            <NAME>CA ISLA VISTA 6545 TRIGO RD US7</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA 6545 TRIGO RD US7 ELEVEN</MEMO>
+            <USERS.STMT>
+              <TRNBAL>35.97</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>954392</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160604120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>-6.75</TRNAMT>
+            <FITID>64075_3598</FITID>
+            <NAME>CA ISLA VISTA SQ *BAGEL CAFE,</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA SQ *BAGEL CAFE, INCUSSQ *BAGEL CAFE,</MEMO>
+            <USERS.STMT>
+              <TRNBAL>29.22</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>80069</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160604120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>-4.95</TRNAMT>
+            <FITID>64075_3599</FITID>
+            <NAME>CA GOLETA 7095 MARKET PLACE</NAME>
+            <MEMO>Withdrawal  @ CA GOLETA 7095 MARKET PLACE DUSCOSTCO WHSE #047</MEMO>
+            <USERS.STMT>
+              <TRNBAL>24.27</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>377976</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEP</TRNTYPE>
+            <DTPOSTED>20160605120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>200</TRNAMT>
+            <FITID>64075_3601</FITID>
+            <NAME>CA Visa Direct SQC*Michael</NAME>
+            <MEMO>Deposit  @ CA Visa Direct SQC*Michael BernadeUSSQC*Michael Bern</MEMO>
+            <USERS.STMT>
+              <TRNBAL>224.27</TRNBAL>
+              <TRNTYPE>POSD</TRNTYPE>
+              <TRACENUMBER>207774</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160605120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>-22.14</TRNAMT>
+            <FITID>64075_3604</FITID>
+            <NAME>CA ISLA VISTA SNOWFLAKE</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA SNOWFLAKE USSNOWFLAKE</MEMO>
+            <USERS.STMT>
+              <TRNBAL>202.13</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>20278</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160606120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>-31</TRNAMT>
+            <FITID>64075_3610</FITID>
+            <NAME>CA . / SQC*ANDREW ZENG</NAME>
+            <MEMO>Withdrawal  @ CA . / SQC*ANDREW ZENG USSQC*ANDREW ZENG</MEMO>
+            <USERS.STMT>
+              <TRNBAL>171.13</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>26037</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160606120000.000</DTPOSTED>
+            <DTUSER>20160606120000.000</DTUSER>
+            <TRNAMT>-21</TRNAMT>
+            <FITID>64075_3611</FITID>
+            <NAME>CA . / SQC*ANDREW ZENG</NAME>
+            <MEMO>Withdrawal  @ CA . / SQC*ANDREW ZENG USSQC*ANDREW ZENG</MEMO>
+            <USERS.STMT>
+              <TRNBAL>150.13</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>84717</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160607120000.000</DTPOSTED>
+            <DTUSER>20160607120000.000</DTUSER>
+            <TRNAMT>-17.68</TRNAMT>
+            <FITID>64076_3614</FITID>
+            <NAME>MD 800 689 6613 SBMENUSHANA</NAME>
+            <MEMO>Withdrawal  @ MD 800 689 6613 SBMENUSHANA KITCHENUSSBMENUSHANA KITC</MEMO>
+            <USERS.STMT>
+              <TRNBAL>132.45</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>21508</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160607120000.000</DTPOSTED>
+            <DTUSER>20160607120000.000</DTUSER>
+            <TRNAMT>-7.99</TRNAMT>
+            <FITID>64076_3617</FITID>
+            <NAME>CA NETFLIX.COM NETFLIX.COM</NAME>
+            <MEMO>Withdrawal  @ CA NETFLIX.COM NETFLIX.COM USNETFLIX.COM</MEMO>
+            <USERS.STMT>
+              <TRNBAL>124.46</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>32709</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160607120000.000</DTPOSTED>
+            <DTUSER>20160607120000.000</DTUSER>
+            <TRNAMT>-9.71</TRNAMT>
+            <FITID>64076_3618</FITID>
+            <NAME>CA ISLA VISTA 6545 TRIGO RD US7</NAME>
+            <MEMO>Withdrawal  @ CA ISLA VISTA 6545 TRIGO RD US7 ELEVEN</MEMO>
+            <USERS.STMT>
+              <TRNBAL>114.75</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>986807</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160609120000.000</DTPOSTED>
+            <DTUSER>20160609120000.000</DTUSER>
+            <TRNAMT>-11.16</TRNAMT>
+            <FITID>64078_3620</FITID>
+            <NAME>CA GOLETA CKE*IKES PLACE</NAME>
+            <MEMO>Withdrawal  @ CA GOLETA CKE*IKES PLACE USCKE*IKES PLACE</MEMO>
+            <USERS.STMT>
+              <TRNBAL>103.59</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>34070</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160611120000.000</DTPOSTED>
+            <DTUSER>20160610120000.000</DTUSER>
+            <TRNAMT>-20.95</TRNAMT>
+            <FITID>64079_3623</FITID>
+            <NAME>CA GOLETA FREEBIRDS USFREEBIRDS</NAME>
+            <MEMO>Withdrawal  @ CA GOLETA FREEBIRDS USFREEBIRDS</MEMO>
+            <USERS.STMT>
+              <TRNBAL>82.64</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>80188</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160612120000.000</DTPOSTED>
+            <DTUSER>20160613120000.000</DTUSER>
+            <TRNAMT>-6.25</TRNAMT>
+            <FITID>64082_3626</FITID>
+            <NAME>CA NEVADA CITY SQ *TREATS</NAME>
+            <MEMO>Withdrawal  @ CA NEVADA CITY SQ *TREATS NEVADA CUSSQ *TREATS NEVAD</MEMO>
+            <USERS.STMT>
+              <TRNBAL>76.39</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>21189</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEP</TRNTYPE>
+            <DTPOSTED>20160613120000.000</DTPOSTED>
+            <DTUSER>20160613120000.000</DTUSER>
+            <TRNAMT>44.04</TRNAMT>
+            <FITID>64082_3627</FITID>
+            <NAME>Draft Deposit</NAME>
+            <MEMO>Deposit </MEMO>
+            <USERS.STMT>
+              <TRNBAL>120.43</TRNBAL>
+              <TRNTYPE>DRAFTDEP</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEP</TRNTYPE>
+            <DTPOSTED>20160614120000.000</DTPOSTED>
+            <DTUSER>20160614120000.000</DTUSER>
+            <TRNAMT>2561</TRNAMT>
+            <FITID>64083_3630</FITID>
+            <NAME>Apex Clearing (ACH) </NAME>
+            <MEMO>Deposit-ACH-8148 Apex Clearing (ACH) </MEMO>
+            <USERS.STMT>
+              <TRNBAL>2681.43</TRNBAL>
+              <TRNTYPE>ACHDEP</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEP</TRNTYPE>
+            <DTPOSTED>20160614120000.000</DTPOSTED>
+            <DTUSER>20160614120000.000</DTUSER>
+            <TRNAMT>.29</TRNAMT>
+            <FITID>64083_3633</FITID>
+            <NAME>VENMO-3 (VERIFYBAN) </NAME>
+            <MEMO>Deposit-ACH-280361 VENMO-3 (VERIFYBAN) </MEMO>
+            <USERS.STMT>
+              <TRNBAL>2681.72</TRNBAL>
+              <TRNTYPE>ACHDEP</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160614120000.000</DTPOSTED>
+            <DTUSER>20160614120000.000</DTUSER>
+            <TRNAMT>-.18</TRNAMT>
+            <FITID>64083_3635</FITID>
+            <NAME>WEBVENMO-4 (VERIFYBAN) </NAME>
+            <MEMO>Withdrawal-ACH-A-280368 WEBVENMO-4 (VERIFYBAN) </MEMO>
+            <USERS.STMT>
+              <TRNBAL>2681.54</TRNBAL>
+              <TRNTYPE>DRAFTWDL</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160614120000.000</DTPOSTED>
+            <DTUSER>20160614120000.000</DTUSER>
+            <TRNAMT>-.11</TRNAMT>
+            <FITID>64083_3636</FITID>
+            <NAME>WEBVENMO-4 (VERIFYBAN) </NAME>
+            <MEMO>Withdrawal-ACH-A-280368 WEBVENMO-4 (VERIFYBAN) </MEMO>
+            <USERS.STMT>
+              <TRNBAL>2681.43</TRNBAL>
+              <TRNTYPE>DRAFTWDL</TRNTYPE>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160615120000.000</DTPOSTED>
+            <DTUSER>20160615120000.000</DTUSER>
+            <TRNAMT>-9.08</TRNAMT>
+            <FITID>64084_3640</FITID>
+            <NAME>CA GRASS VALLEY BUBBA'S BAGELS</NAME>
+            <MEMO>Withdrawal  @ CA GRASS VALLEY BUBBA'S BAGELS USBUBBA'S BAGELS</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2672.35</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>65311</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160616120000.000</DTPOSTED>
+            <DTUSER>20160616120000.000</DTUSER>
+            <TRNAMT>-7</TRNAMT>
+            <FITID>64085_3643</FITID>
+            <NAME>CA 402 935 7733 PAYPAL *GITHUB</NAME>
+            <MEMO>Withdrawal  @ CA 402 935 7733 PAYPAL *GITHUB INC USPAYPAL *GITHUB I</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2665.35</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>74952</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160617120000.000</DTPOSTED>
+            <DTUSER>20160617120000.000</DTUSER>
+            <TRNAMT>-16</TRNAMT>
+            <FITID>64086_3645</FITID>
+            <NAME>AZ 480 719 1646 PARCHMENT UNIV</NAME>
+            <MEMO>Withdrawal  @ AZ 480 719 1646 PARCHMENT UNIV DOUSPARCHMENT UNIV</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2649.35</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>42284</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160618120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-49.93</TRNAMT>
+            <FITID>64089_3651</FITID>
+            <NAME>FL 877 430 2355</NAME>
+            <MEMO>Withdrawal  @ FL 877 430 2355 STRAIGHTTALK*SERVICUSSTRAIGHTTALK*SER</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2599.42</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>86953</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160619120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-110</TRNAMT>
+            <FITID>64089_3656</FITID>
+            <NAME>CA . / SQC*MICHAEL</NAME>
+            <MEMO>Withdrawal  @ CA . / SQC*MICHAEL BERNADEUSSQC*MICHAEL BERN</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2489.42</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>67240</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160619120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-25.86</TRNAMT>
+            <FITID>64089_3658</FITID>
+            <NAME>CA 8665761039 Uber Technologies</NAME>
+            <MEMO>Withdrawal  @ CA 8665761039 Uber Technologies IUSUber Technologie</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2463.56</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>15138</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160619120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-59.75</TRNAMT>
+            <FITID>64089_3661</FITID>
+            <NAME>NY 800 653 8000 TM *AWOLNATION</NAME>
+            <MEMO>Withdrawal  @ NY 800 653 8000 TM *AWOLNATION USTM *AWOLNATION</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2403.81</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>76047</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160619120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-25</TRNAMT>
+            <FITID>64089_3663</FITID>
+            <NAME>TX 800 932 2732 UNITED</NAME>
+            <MEMO>Withdrawal  @ TX 800 932 2732 UNITED 0162608USUNITED 0162</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2378.81</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>48185</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160620120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-2.65</TRNAMT>
+            <FITID>64089_3665</FITID>
+            <NAME>MA ROXBURY 225 CENTRE STREET</NAME>
+            <MEMO>Withdrawal  @ MA ROXBURY 225 CENTRE STREET USSUBWAY JACKSON</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2376.16</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>27839</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160620120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-9.49</TRNAMT>
+            <FITID>64089_3667</FITID>
+            <NAME>TX 800 932 2732 UNITED</NAME>
+            <MEMO>Withdrawal  @ TX 800 932 2732 UNITED 0162927USUNITED 0162</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2366.67</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>25278</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160620120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-19.09</TRNAMT>
+            <FITID>64089_3669</FITID>
+            <NAME>MA JAMAICA PLAIN WOK N TALK</NAME>
+            <MEMO>Withdrawal  @ MA JAMAICA PLAIN WOK N TALK USWOK N TALK</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2347.58</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>1</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160621120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-2.65</TRNAMT>
+            <FITID>64089_3670</FITID>
+            <NAME>MA BOSTON 1 ESSEX STREET</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON 1 ESSEX STREET USSUBWAY CHINATOW</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2344.93</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>23901</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160621120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-2.65</TRNAMT>
+            <FITID>64089_3671</FITID>
+            <NAME>MA BOSTON 1 ESSEX STREET</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON 1 ESSEX STREET USSUBWAY CHINATOW</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2342.28</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>24767</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160621120000.000</DTPOSTED>
+            <DTUSER>20160620120000.000</DTUSER>
+            <TRNAMT>-11.28</TRNAMT>
+            <FITID>64089_3673</FITID>
+            <NAME>MA JAMAICA PLAIN 301 CENTER ST</NAME>
+            <MEMO>Withdrawal  @ MA JAMAICA PLAIN 301 CENTER ST USSTOP &amp; SHOP 0075</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2331</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>702836</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160621120000.000</DTPOSTED>
+            <DTUSER>20160621120000.000</DTUSER>
+            <TRNAMT>-2.65</TRNAMT>
+            <FITID>64090_3674</FITID>
+            <NAME>MA ROXBURY 225 CENTRE STREET</NAME>
+            <MEMO>Withdrawal  @ MA ROXBURY 225 CENTRE STREET USSUBWAY JACKSON</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2328.35</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>41959</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEP</TRNTYPE>
+            <DTPOSTED>20160621120000.000</DTPOSTED>
+            <DTUSER>20160621120000.000</DTUSER>
+            <TRNAMT>59.75</TRNAMT>
+            <FITID>64090_3675</FITID>
+            <NAME>NY 800 653 8000 TM *AWOLNATION</NAME>
+            <MEMO>Deposit  @ NY 800 653 8000 TM *AWOLNATION USTM *AWOLNATION</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2388.1</TRNBAL>
+              <TRNTYPE>POSD</TRNTYPE>
+              <TRACENUMBER>59486</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160622120000.000</DTPOSTED>
+            <DTUSER>20160622120000.000</DTUSER>
+            <TRNAMT>-11.6</TRNAMT>
+            <FITID>64091_3679</FITID>
+            <NAME>MA JAMAICA PLAIN GRASS FED</NAME>
+            <MEMO>Withdrawal  @ MA JAMAICA PLAIN GRASS FED USGRASS FED</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2376.5</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>10055</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160622120000.000</DTPOSTED>
+            <DTUSER>20160622120000.000</DTUSER>
+            <TRNAMT>-9.58</TRNAMT>
+            <FITID>64091_3681</FITID>
+            <NAME>MA BOSTON U BURGER USU BURGER</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON U BURGER USU BURGER</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2366.92</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>49328</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160622120000.000</DTPOSTED>
+            <DTUSER>20160622120000.000</DTUSER>
+            <TRNAMT>-13.31</TRNAMT>
+            <FITID>64091_3683</FITID>
+            <NAME>MA JAMAICA PLAIN FOOD WALL</NAME>
+            <MEMO>Withdrawal  @ MA JAMAICA PLAIN FOOD WALL CHINESE RUSFOOD WALL CHINES</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2353.61</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>40049</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160623120000.000</DTPOSTED>
+            <DTUSER>20160623120000.000</DTUSER>
+            <TRNAMT>-56.11</TRNAMT>
+            <FITID>64092_3687</FITID>
+            <NAME>CA 805 4552677 GOODLAND FLORIST</NAME>
+            <MEMO>Withdrawal  @ CA 805 4552677 GOODLAND FLORIST USGOODLAND FLORIST</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2297.5</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>13592</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160623120000.000</DTPOSTED>
+            <DTUSER>20160623120000.000</DTUSER>
+            <TRNAMT>-7</TRNAMT>
+            <FITID>64092_3689</FITID>
+            <NAME>MA JAMAICA PLAIN YELY'S COFFEE</NAME>
+            <MEMO>Withdrawal  @ MA JAMAICA PLAIN YELY'S COFFEE SHOP USYELY'S COFFEE SH</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2290.5</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>57</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160624120000.000</DTPOSTED>
+            <DTUSER>20160623120000.000</DTUSER>
+            <TRNAMT>-102</TRNAMT>
+            <FITID>64092_3696</FITID>
+            <NAME>CA 8447695368 SOYLENT USSOYLENT</NAME>
+            <MEMO>Withdrawal  @ CA 8447695368 SOYLENT USSOYLENT</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2188.5</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>46968</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160624120000.000</DTPOSTED>
+            <DTUSER>20160623120000.000</DTUSER>
+            <TRNAMT>-7</TRNAMT>
+            <FITID>64092_3697</FITID>
+            <NAME>MA BOSTON SQ *CHICKEN AND</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON SQ *CHICKEN AND RICUSSQ *CHICKEN AND</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2181.5</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>47099</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160624120000.000</DTPOSTED>
+            <DTUSER>20160624120000.000</DTUSER>
+            <TRNAMT>-4.99</TRNAMT>
+            <FITID>64093_3699</FITID>
+            <NAME>CA 866 712 7753 APL*</NAME>
+            <MEMO>Withdrawal  @ CA 866 712 7753 APL* ITUNES.COM/BILUSAPL* ITUNES.COM/</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2176.51</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>36540</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160625120000.000</DTPOSTED>
+            <DTUSER>20160624120000.000</DTUSER>
+            <TRNAMT>-9.5</TRNAMT>
+            <FITID>64093_3701</FITID>
+            <NAME>MA BOSTON NEW YORK PIZZA II</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON NEW YORK PIZZA II USNEW YORK PIZZA I</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2167.01</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>49155</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20160625120000.000</DTPOSTED>
+            <DTUSER>20160627120000.000</DTUSER>
+            <TRNAMT>-42.49</TRNAMT>
+            <FITID>64096_3703</FITID>
+            <NAME>MA BOSTON GUITAR CENTER #550</NAME>
+            <MEMO>Withdrawal  @ MA BOSTON GUITAR CENTER #550 USGUITAR CENTER #5</MEMO>
+            <USERS.STMT>
+              <TRNBAL>2124.52</TRNBAL>
+              <TRNTYPE>POSW</TRNTYPE>
+              <TRACENUMBER>129390</TRACENUMBER>
+            </USERS.STMT>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT>2124.52</BALAMT>
+          <DTASOF>20160627120000.000</DTASOF>
+        </LEDGERBAL>
+        <AVAILBAL>
+          <BALAMT>2077.61</BALAMT>
+          <DTASOF>20160627120000.000</DTASOF>
+        </AVAILBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>
