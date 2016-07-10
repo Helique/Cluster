@@ -7,6 +7,6 @@ module.exports = {
   'database': 'finance',
   'categories_table': 'categories',
   'regex_table': 'regex',
-  'reports_table': 'reports',
+  'charges_table': 'charges',
   'verification_table': 'verification_codes'
 }

@@ -11,6 +11,9 @@ var storage =   multer.diskStorage({
         callback(null, file.fieldname + '-' + Date.now());
     }
 });
+var category_model = require("../models/categories");
+var request = require('request');
+var casper = require('casper').create();
 
 var upload = multer({ storage : storage}).single('userPhoto');
 /* GET home page */
@@ -30,57 +33,49 @@ router.post('/api/photo',function(req,res){
     });
 });
 
-router.get('/xml',function(req,res){
-    var parseString = require('xml2js').parseString;
-    var xml = "<root>Hello xml2js!</root>"
-    parseString(xml, function (err, result) {
-        console.dir(result);
+router.get('/login',function(req,res){
+    casper.start('http://casperjs.org/');
+    casper.then(function() {
+        console.log('First Page: ' + this.getTitle());
     });
-    res.end("xml called!");
+    casper.run();
+    res.end("thing has been run");
 });
 
-router.post('/category',function(req,res){
-    res.end("post category called!");
+router.get('/api/1.0/charge',function(req, res, info){
+    category_model.get(function(response){
+        res.json(response);
+    });
 });
 
-router.delete('/category',function(req,res){
-    res.end("delete category called!");
+router.post('/api/1.0/category',function(req, res, info){
+    category_model.create(req.body.category_name, function(response){
+        res.json(response);
+    });
 });
 
-router.get('/category',function(req,res){
-    res.end("get category called!");
+router.delete('/api/1.0/category',function(req,res){
+    category_model.delete(req.body.category_name, function(response){
+        res.json(response);
+    });
 });
 
-router.post('/category/regex',function(req,res){
+router.get('/api/1.0/category',function(req,res){
+    category_model.get(req.body.category_name, function(response){
+        res.json(response);
+    });
+});
+
+router.post('/api/1.0/category/regex',function(req,res){
     res.end("post regex called!");
 });
 
-router.delete('/category/regex',function(req,res){
+router.delete('/api/1.0/category/regex',function(req,res){
     res.end("delete regex called!");
 });
 
-
-
-
 router.get('/file', function(req,res){
-    var parser = new xml2js.Parser();
-    fs.readFile(__dirname + '/may.qfx', function(err, data) {
-        parser.parseString(data, function (err, result) {
-            console.log("file location:" + __dirname);
-            var transactions = result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].BANKTRANLIST[0].STMTTRN;
-            console.dir("Number of transactions: " + transactions.length);
-            var totalSpent = 0;
-            for(var trans in transactions){
-                console.log("Trans: "+ trans +", " + transactions[trans].MEMO +", " + parseFloat(transactions[trans].TRNAMT[0]));
-                totalSpent +=  parseFloat(transactions[trans].TRNAMT[0]);
-            }
-            console.log ("Total spent: " + totalSpent);
-            console.log("Error");
-            console.log(err);
-            console.log('Done');
-        });
-    });
-    res.json("{fuck}");
+    
 });
 
 

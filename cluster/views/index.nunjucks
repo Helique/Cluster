@@ -1,5 +1,4 @@
 <html>
-	<div>
         <head>
             <link rel="stylesheet" href="/stylesheets/MainPage.css" />
         </head>
@@ -7,7 +6,7 @@
             <h1 class = "title">626 Studios</h1>
             <p> Hell my name is David Bernadett and I enjoy working hard and with my friends. My hobbies include building speakers, running, and soccer. </p>
             <h2> Speaker Building </h2>
-                <h3>Part 1/3 : Fall 2014</h3>
+                <h3>Part 4/3 : Fall 2014</h3>
                     <p> My first real speaker project was a pair of monitors and an amplifier. </p>
                     <p> The monitors were extremely simple. I choose a pair of FaitalPro 4" drivers, and designed a box using aj sealed speaker designer. </p>
                     <p> The amplifier was a little harder. It is designed around a car stereo amplifier. It also includes a dot-bar display and an integrating circuit that acts as a low pass filter for the dot-bar display. All of the circuit boards were designed with eagle PCB and then printed by OSH Park. </p>
@@ -25,5 +24,4 @@
                     </form>
 
         </body>
-    </div>
 </html>
