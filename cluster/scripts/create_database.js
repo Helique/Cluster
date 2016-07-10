@@ -25,18 +25,20 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.regex_table + '` ( \
     `category_id` INT UNSIGNED NOT NULL, \
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    INDEX `category_id_index` (`category_id` ASC) \
+    INDEX `category_id_INDEX` (`category_id` ASC) \
 )');
 
 connection.query('\
-CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.reports_table + '` ( \
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.charges_table + '` ( \
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
     `charge` INT NOT NULL, \
     `description` CHAR(60) NOT NULL, \
     `category_id` INT UNSIGNED NOT NULL, \
+    `date` DATE NOT NULL, \
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    INDEX `category_id_index` (`category_id` ASC) \
+    INDEX `category_id_INDEX` (`category_id` ASC), \
+    INDEX `date_INDEX` (`date` ASC) \
 )');
 
 console.log('Success: Database Created!')
