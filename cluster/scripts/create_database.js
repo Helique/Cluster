@@ -21,11 +21,12 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.categories_table + '` ( \
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.regex_table + '` ( \
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
-    `regex` VARCHAR(20) NOT NULL, \
-    `category_id` INT UNSIGNED NOT NULL, \
+    `regex` VARCHAR(60) NOT NULL, \
+    `category_name` CHAR(60) NOT NULL, \
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    INDEX `category_id_INDEX` (`category_id` ASC) \
+    INDEX `category_name_INDEX` (`category_name` ASC), \
+    UNIQUE INDEX `regex_UNIQUE` (`regex` ASC) \
 )');
 
 connection.query('\

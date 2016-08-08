@@ -9,16 +9,15 @@ var charges = {};
 
 
 charges.get = function(callback){
-    console.log(category_name);
-    if(category_name == undefined){
-        var rows = connection.query("SELECT * FROM " + dbconfig.categories_table, null, function (err, rows) {
-            return callback(rows);
-        });
-    } else {
-        var rows = connection.query("SELECT * FROM " + dbconfig.categories_table + " WHERE category_name = ?", [category_name], function (err, rows) {
-            return callback(rows);
-        });
-    }
+    var rows = connection.query("SELECT * FROM " + dbconfig.charges_table, null, function (err, rows) {
+        return callback(rows);
+    });
+};
+
+charges.getRange = function(start_date, end_date, callback){
+    var rows = connection.query("SELECT * FROM " + dbconfig.charges_table + " WHERE `date` BETWEEN ? and ?", [start_date, end_date], function (err, rows) {
+        return callback(rows);
+    });
 };
 
 module.exports = charges;

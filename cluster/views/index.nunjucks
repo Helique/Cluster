@@ -22,6 +22,6 @@
                         <input type="file" name="userPhoto" id="userPhoto">
                         <input type="submit" value="Upload File" name="submit">
                     </form>
-
+https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js
         </body>
 </html>
