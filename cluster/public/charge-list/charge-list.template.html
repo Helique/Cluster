@@ -1,11 +1,20 @@
 <table class="charges table">
+
+    <form name="order">
+        <label for="ordering"> Sort By: </label><br>
+        <select name="singleSelect" ng-model="$ctrl.ordering">
+            <option value="-date">Newest First</option>
+            <option value="date">Oldest First</option>
+        </select><br>
+    </form>
+
     <tr>
         <td><b>Memo:</b></td>
         <td><b>Category:</b></td>
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in $ctrl.charges | filter:$ctrl.chargeService.query">
+    <tr ng-repeat="charge in $ctrl.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.query">
         <td>{{charge.memo}}</td>
         <td>{{charge.category}}</td>
         <td>{{charge.charge}}</td>
