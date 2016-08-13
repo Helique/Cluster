@@ -5,7 +5,7 @@
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in $ctrl.charges | filter:$ctrl.query">
+    <tr ng-repeat="charge in $ctrl.charges | filter:$ctrl.chargeService.query">
         <td>{{charge.memo}}</td>
         <td>{{charge.category}}</td>
         <td>{{charge.charge}}</td>

@@ -4,6 +4,7 @@
     <script src="dev/angular.js"></script>
     <script src="static/charge-list/charge-list.module.js"></script>
     <script src="static/charge-list/charge-list.component.js"></script>
+    <script src="static/charge-list/charge-search.component.js"></script>
     <script src="static/category-list/category-list.module.js"></script>
     <script src="static/category-list/category-list.component.js"></script>
     <script src="static/app.module.js"></script>
@@ -17,7 +18,7 @@
         <div class="row">
             <div class="col-md-2">
                 <!--Sidebar content-->
-                Search: <input ng-model="$ctrl.query" />
+                <charge-search></charge-search>
                 <category-list></category-list>
             </div>
             <div class="col-md-10">

@@ -18,7 +18,6 @@ categories.create = function(category_name, callback){
 };
 
 categories.get = function(category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         var rows = connection.query("SELECT * FROM " + dbconfig.categories_table, null, function (err, rows) {
             return callback(rows);

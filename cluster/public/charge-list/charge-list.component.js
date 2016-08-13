@@ -5,7 +5,7 @@ angular.
     module('chargeList').
     component('chargeList',{
         templateUrl: 'charge-list/charge-list.template.html',
-        controller: function ChargeListController($http){
+        controller: function ChargeListController(chargeService, $http){
             var self = this;
             $http.get('/api/1.0/charge').then(function(response) {
                 self.charges = response.data;
@@ -13,5 +13,6 @@ angular.
                     self.charges[charge].date = new Date(self.charges[charge].date);
                 }
             });
+            self.chargeService = chargeService;
         }
     });
