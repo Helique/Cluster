@@ -14,5 +14,6 @@ angular.
                 }
             });
             self.chargeService = chargeService;
+            self.ordering = '-date';
         }
     });

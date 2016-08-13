@@ -7,6 +7,6 @@ component('chargeSearch',{
     templateUrl: 'charge-list/charge-search.template.html',
     controller: function ChargeSearchController(chargeService, $http){
         var self = this;
-        self.charges = chargeService;
+        self.chargeService = chargeService;
     }
 });
