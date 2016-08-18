@@ -12,8 +12,18 @@ categories.create = function(category_name, callback){
     //var insertQuery = "INSERT INTO " + dbconfig.categories_table + " (category_name) VALUES (?) ON DUPLICATE KEY IGNORE";
     var insertQuery = "INSERT IGNORE INTO " + dbconfig.categories_table + " (category_name) VALUES (?)";
     var results = connection.query(insertQuery, [category_name], function(err, rows){
-        console.log(err);
-        callback({"status": "category added"});
+        callback({category_name: category_name, id: rows.insertId});
+    });
+};
+
+categories.update = function(id, category_name, callback){
+    console.log(category_name);
+    if(category_name == undefined){
+        return callback({"err": "category_name is null", "errno": 2});
+    }
+    var updateQuery = "UPDATE " + dbconfig.categories_table + " SET category_name = ? WHERE id = ?";
+    var results = connection.query(updateQuery, [category_name, id], function(err, rows){
+        callback(rows);
     });
 };
 
@@ -30,7 +40,6 @@ categories.get = function(category_name, callback){
 };
 
 categories.delete = function(category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
     } else {
