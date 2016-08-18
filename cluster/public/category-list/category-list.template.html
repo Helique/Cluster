@@ -1,4 +1,4 @@
-<button ng-click="$ctrl.createCategory()" class="btn btn-default">Create Cateogry</button>
+<button ng-click="$ctrl.createCategory('New Category')" class="btn btn-default">Create Cateogry</button>
 <br>
 <table class="categories table">
  <tr>
@@ -6,11 +6,12 @@
  </tr>
  <tr ng-repeat="category in $ctrl.categories">
   <td>
-   <span ng-hide="editing" ng-click="editing = true">{{category.name}}</span>
+   <span ng-hide="editing" ng-click="editing = true">{{category.category_name}}</span>
    <form ng-show="editing" ng-submit="editing = false; $ctrl.updateCategory(category)">
-    <input type="text" ng-model="category.name" placeholder="Name" ng-required/>
+    <input type="text" ng-model="category.category_name" placeholder="Name" ng-required/>
     <br/>
    </form>
+   <button ng-click="$ctrl.deleteCategory(category.category_name)" class="btn btn-default">Delete</button>
   </td>
  </tr>
 </table>

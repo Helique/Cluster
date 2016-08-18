@@ -46,14 +46,19 @@ router.get('/api/1.0/category',function(req,res){
 });
 
 router.post('/api/1.0/category',function(req, res, info){
-    category_model.create(req.body.category_name, function(response){
-        res.json(response);
-    });
-
+    if(req.body.id){
+        category_model.update(req.body.id, req.body.category_name, function(response){
+            res.json(response);
+        });
+    } else {
+        category_model.create(req.body.category_name, function(response){
+            res.json(response);
+        }); 
+    }
 });
 
-router.delete('/api/1.0/category',function(req,res){
-    category_model.delete(req.body.category_name, function(response){
+router.delete('/api/1.0/category/:category_name',function(req,res){
+    category_model.delete(req.params.category_name, function(response){
         res.json(response);
     });
 });
