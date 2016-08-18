@@ -14,7 +14,7 @@
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in $ctrl.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.query">
+    <tr ng-repeat="charge in $ctrl.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.transactionSearch">
         <td>{{charge.memo}}</td>
         <td>{{charge.category}}</td>
         <td>{{charge.charge}}</td>
