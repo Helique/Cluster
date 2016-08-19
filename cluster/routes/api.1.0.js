@@ -57,18 +57,36 @@ router.post('/api/1.0/category',function(req, res, info){
     }
 });
 
-router.delete('/api/1.0/category/:category_name',function(req,res){
-    category_model.delete(req.params.category_name, function(response){
+router.get('/api/1.0/category/:category_name/regex',function(req,res){
+    regex_model.get(null, req.params.category_name, function(response){
         res.json(response);
     });
 });
 
-router.post('/api/1.0/category/regex',function(req,res){
-    res.end("post regex called!");
+router.delete('/api/1.0/category/:category_name',function(req,res){
+    regex_model.deleteAll(req.params.category_name, function(response){
+        category_model.delete(req.params.category_name, function(response){
+            res.json(response);
+        });
+    });
 });
 
-router.delete('/api/1.0/category/regex',function(req,res){
-    res.end("delete regex called!");
+router.post('/api/1.0/category/:category_name/regex',function(req,res){
+    if(req.body.id == undefined) {
+        regex_model.create(req.body.regex, req.params.category_name, function (response) {
+            res.json(response);
+        });
+    } else {
+        regex_model.update(req.body.id, req.body.regex, function (response) {
+            res.json(response);
+        });
+    }
+});
+
+router.delete('/api/1.0/category/:category_name/regex/:regex_id',function(req,res){
+    regex_model.deleteRegex(req.params.regex_id, function(response){
+        res.json(response);
+    });
 });
 
 router.get('/file', function(req,res){

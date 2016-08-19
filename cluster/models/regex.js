@@ -13,7 +13,7 @@ regex.create = function(regex, category_name, callback){
     var insertQuery = "INSERT IGNORE INTO " + dbconfig.regex_table + " (regex, category_name) VALUES (?,?)";
     var results = connection.query(insertQuery, [regex, category_name], function(err, rows){
         console.log(err);
-        callback({"status": "category added"});
+        callback(callback({regex: regex, id: rows.insertId}));
     });
 };
 
@@ -30,19 +30,29 @@ regex.get = function(regex, category_name, callback){
     }
 };
 
-regex.deleteRegex = function(regex, callback){
-    console.log(regex);
+regex.update = function(id, regex, callback){
     if(regex == undefined){
-        return callback({"err": "category_name is null", "errno": 2});
+        return callback({"err": "regex is null", "errno": 2});
+    }
+    var updateQuery = "UPDATE " + dbconfig.regex_table + " SET regex = ? WHERE id = ?";
+    var results = connection.query(updateQuery, [regex, id], function(err, rows){
+        callback(rows);
+    });
+};
+
+regex.deleteRegex = function(id, callback){
+    console.log(id);
+    if(id == undefined){
+        return callback({"err": "id is null", "errno": 2});
     } else {
-        var insertQuery = "DELETE FROM " + dbconfig.regex_table + " WHERE  regex = ?";
-        var results = connection.query(insertQuery, [regex], function(err, rows){
+        var insertQuery = "DELETE FROM " + dbconfig.regex_table + " WHERE  id = ?";
+        var results = connection.query(insertQuery, [id], function(err, rows){
             return callback(rows);
         });
     }
 };
 
-regex.deleteCategory = function(category_name, callback){
+regex.deleteAll = function(category_name, callback){
     console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
