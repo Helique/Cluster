@@ -18,7 +18,6 @@ angular.
                 });
             };
             self.deleteCategory = function(name){
-                console.log("Category Deleted: " + name);
                 $http.delete('/api/1.0/category/'+ name).then(function(response){
                     console.log(response);
                     for (category in self.categories) {
@@ -30,9 +29,38 @@ angular.
                     self.categories.splice(toDelete,1);
                 });
             };
+            self.updateRegex = function(category, regex){
+                $http.post('/api/1.0/category/'+ category.category_name + "/regex", regex).then(function(response){
+                });
+            };
+            
+            self.deleteRegex = function(category, regex){
+                $http.delete('/api/1.0/category/'+ category.category_name + "/regex/" +regex.id).then(function(response){
+                    var toDelete;
+                    for (cat_index in category.regex) {
+                        if(category.regex[cat_index].id === regex.id){
+                            toDelete = cat_index;
+                            break;
+                        }
+                    }
+                    category.regex.splice(toDelete,1);
+                });
+                
+            };
+
+            self.createRegex = function(category, regex){
+                $http.post('/api/1.0/category/'+ category.category_name + "/regex",{regex:regex}).then(function(response){
+                    category.regex.push(response.data);
+                });
+            };
+
             $http.get('/api/1.0/category').then(function(response) {
                 self.categories = response.data;
+                for (category in self.categories) {
+                    $http.get('/api/1.0/category/'+self.categories[category].category_name+"/regex").then(function(response) {
+                        self.categories[category].regex = response.data;
+                    });
+                }
             });
-
         }
     });
