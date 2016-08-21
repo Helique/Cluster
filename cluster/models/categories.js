@@ -4,8 +4,8 @@ var connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
 
 var categories = {};
+
 categories.create = function(category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
     }
@@ -17,7 +17,6 @@ categories.create = function(category_name, callback){
 };
 
 categories.update = function(id, category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
     }

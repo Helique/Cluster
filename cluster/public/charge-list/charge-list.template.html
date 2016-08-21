@@ -7,16 +7,16 @@
             <option value="date">Oldest First</option>
         </select><br>
     </form>
-
+    <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
     <tr>
         <td><b>Memo:</b></td>
         <td><b>Category:</b></td>
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in $ctrl.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.transactionSearch">
+    <tr ng-repeat="charge in $ctrl.accountService.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.transactionSearch">
         <td>{{charge.memo}}</td>
-        <td>{{charge.category}}</td>
+        <td>{{charge.category_name}}</td>
         <td>{{charge.charge}}</td>
         <td>{{charge.date.getMonth() + "/"
             + (charge.date.getDate()+1)  + "/"

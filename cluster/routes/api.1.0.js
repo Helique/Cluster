@@ -39,6 +39,18 @@ router.get('/api/1.0/charge',function(req, res, info){
     }
 });
 
+router.post('/api/1.0/charge',function(req, res, info){
+    if(req.body.id){
+        charge_model.update(req.body.id, req.body.category_id, function(response){
+            res.json(response);
+        });
+    } else {
+    //    category_model.create(req.body.category_name, function(response){
+        res.json({error:"something was off"});
+      //  });
+    }
+});
+
 router.get('/api/1.0/category',function(req,res){
     category_model.get(req.body.category_name, function(response){
         res.json(response);
