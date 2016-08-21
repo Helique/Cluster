@@ -3,5 +3,6 @@
  */
 var clusterApp =  angular.module('clusterApp', [
     'chargeList',
-    'categoryList'
+    'categoryList',
+    'accountService'
 ]);

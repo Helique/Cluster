@@ -1,26 +1,26 @@
-<button ng-click="$ctrl.createCategory('New Category')" class="btn btn-default">Create Cateogry</button>
+<button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Cateogry</button>
 <br>
 <ul class="categories table">
  <li>
   <b>Name:</b>
  </li>
- <li ng-repeat="category in $ctrl.categories">
+ <li ng-repeat="category in $ctrl.accountService.categories">
    <span ng-hide="editing" ng-click="editing = true">{{category.category_name}}</span>
-   <form ng-show="editing" ng-submit="editing = false; $ctrl.updateCategory(category)">
+   <form ng-show="editing" ng-submit="editing = false; $ctrl.accountService.updateCategory(category,null)">
     <input type="text" ng-model="category.category_name" placeholder="Name" ng-required/>
     <br/>
    </form>
-   <button ng-click="$ctrl.deleteCategory(category.category_name)" class="btn btn-default">Delete</button>
+   <button ng-click="$ctrl.accountService.deleteCategory(category.category_name, null)" class="btn btn-default">Delete</button>
    <ul>
     <li ng-repeat="regex in category.regex">
      <span ng-hide="editing_2" ng-click="editing_2 = true">{{regex.regex}}</span>
-     <form ng-show="editing_2" ng-submit="editing_2 = false; $ctrl.updateRegex(category, regex)">
+     <form ng-show="editing_2" ng-submit="editing_2 = false; $ctrl.accountService.updateRegex(category, regex,null)">
       <input type="text" ng-model="regex.regex" placeholder="Name" ng-required/>
       <br/>
      </form>
-     <button ng-click="$ctrl.deleteRegex(category, regex)" class="btn btn-default">Delete</button>
+     <button ng-click="$ctrl.accountService.deleteRegex(category, regex, null)" class="btn btn-default">Delete</button>
     </li>
-    <li><input type="text" ng-model="new_regex" placeholder="Name"/><button ng-click="$ctrl.createRegex(category,new_regex)" class="btn btn-default">Create Cateogry</button></li>
+    <li><input type="text" ng-model="new_regex" placeholder="Name"/><button ng-click="$ctrl.accountService.createRegex(category,new_regex,null)" class="btn btn-default">Create Cateogry</button></li>
    </ul>
  </li>
 </ul>
