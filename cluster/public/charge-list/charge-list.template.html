@@ -10,17 +10,23 @@
     <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
     <label>Show only Uncategorized:</label>
     <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
+    <label>Start Date:</label>
+    <input type="date"
+           ng-model="startDate"/>
+    <label>End Date:</label>
+    <input type="date"
+           ng-model="endDate"/>
     <tr>
         <td><b>Memo:</b></td>
         <td><b>Category:</b></td>
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in ($ctrl.accountService.charges | orderBy:$ctrl.ordering | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch)">
+    <tr ng-repeat="charge in ($ctrl.accountService.charges | orderBy:$ctrl.ordering | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch)">
         <td>{{charge.memo}}</td>
         <td>{{charge.category_name}}</td>
         <td>{{charge.charge}}</td>
-        <td>{{charge.date.getMonth() + "/"
+        <td>{{(charge.date.getMonth()+1) + "/"
             + (charge.date.getDate()+1)  + "/"
             + charge.date.getFullYear()}}</td>
     </tr>
