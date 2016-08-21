@@ -8,13 +8,15 @@
         </select><br>
     </form>
     <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
+    <label>Show only Uncategorized:</label>
+    <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
     <tr>
         <td><b>Memo:</b></td>
         <td><b>Category:</b></td>
         <td><b>Charge Ammount:</b></td>
         <td><b>Date:</b></td>
     </tr>
-    <tr ng-repeat="charge in $ctrl.accountService.charges | orderBy:$ctrl.ordering | filter:$ctrl.chargeService.transactionSearch">
+    <tr ng-repeat="charge in ($ctrl.accountService.charges | orderBy:$ctrl.ordering | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch)">
         <td>{{charge.memo}}</td>
         <td>{{charge.category_name}}</td>
         <td>{{charge.charge}}</td>
