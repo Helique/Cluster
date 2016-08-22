@@ -4,5 +4,6 @@
 var clusterApp =  angular.module('clusterApp', [
     'chargeList',
     'categoryList',
-    'accountService'
+    'accountService',
+    'navbar'
 ]);
