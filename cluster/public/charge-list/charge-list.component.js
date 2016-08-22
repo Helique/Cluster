@@ -48,8 +48,6 @@ angular.
             } else {
                 output = input;
             }
-            console.log(dateStart);
-            console.log(dateEnd);
             return output;
 
         }
@@ -80,7 +78,6 @@ angular.
                     sum += value.charge;
                 });
             }
-
             return sum;
         }
     });
