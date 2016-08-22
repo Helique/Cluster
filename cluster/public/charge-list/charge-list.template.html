@@ -1,5 +1,4 @@
-<table class="charges table">
-
+<div>
     <form name="order">
         <label for="ordering"> Sort By: </label><br>
         <select name="singleSelect" ng-model="$ctrl.ordering">
@@ -7,7 +6,11 @@
             <option value="date">Oldest First</option>
         </select><br>
     </form>
+</div>
+<div>
     <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
+</div>
+<div>
     <label>Show only Uncategorized:</label>
     <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
     <label>Start Date:</label>
@@ -16,6 +19,12 @@
     <label>End Date:</label>
     <input type="date"
            ng-model="endDate"/>
+</div>
+<div>
+    <span>Total Expenses: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null}}</span><span>Total Income: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0}}</span>
+
+</div>
+<table class="charges table">
     <tr>
         <td><b>Memo:</b></td>
         <td><b>Category:</b></td>

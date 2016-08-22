@@ -53,4 +53,34 @@ angular.
             return output;
 
         }
+    })
+    .filter('sum', function() {
+        return function(input, below, above) {
+            var sum = 0;
+            if (above != undefined && below != undefined){
+                angular.forEach(input, function(value, key) {
+                    if(below <= value.charge && above >= value.charge) {
+                        sum += value.charge;
+                    }
+                });
+            }else if(above != undefined){
+                angular.forEach(input, function(value, key) {
+                    if(above >= value.charge) {
+                        sum += value.charge;
+                    }
+                });
+            }else if(below != undefined){
+                angular.forEach(input, function(value, key) {
+                    if(below <= value.charge) {
+                        sum += value.charge;
+                    }
+                });
+            } else {
+                angular.forEach(input, function(value, key) {
+                    sum += value.charge;
+                });
+            }
+
+            return sum;
+        }
     });
