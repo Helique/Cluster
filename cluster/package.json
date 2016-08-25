@@ -24,6 +24,7 @@
     "express": "^4.13.4",
     "multer": "1.1.0",
     "nunjucks": "^2.3.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "mysql": "^2.11.1"
   }
 }
