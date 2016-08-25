@@ -4,11 +4,12 @@
 
 var casper = require('casper').create();
 casper.start('https://sccupcu.com/ISuite5/Features/Auth/MFA/Default.aspx');
-
+var password = 'root';
+var username = 'root';
 casper.then(function() {
     this.echo('First Page: ' + this.getTitle());
     this.fill('form#aspnetForm',
-        {'ctl01$Main1$UserIDTextbox':'SCCU292261'}
+        {'ctl01$Main1$UserIDTextbox':username}
         ,false);
     this.mouseEvent('click', '#ctl01_Main1_LoginBtn', "20%", "50%");
 });
@@ -44,7 +45,7 @@ casper.then(function() {
     this.echo("something?");
     this.echo('Third Page: ' + this.getTitle());
     this.fill('form#aspnetForm',
-        {'ctl01$Main1$PasswordTextbox':'2oL2E93Xx7xc'}
+        {'ctl01$Main1$PasswordTextbox':password}
         ,false);
     this.mouseEvent('click', '#ctl01_Main1_SignInBtn', "20%", "50%");
 });
