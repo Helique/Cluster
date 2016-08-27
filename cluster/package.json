@@ -1,7 +1,7 @@
 {
   "name": "cluster_engine",
   "version": "1.0.0",
-  "description": "A graph based social app.",
+  "description": "Financial Planning Software",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,11 +20,12 @@
   "homepage": "https://github.com/Helique/Cluster#readme",
   "dependencies": {
     "angular-route": "^1.5.8",
+    "angular": "1.5.8",
     "body-parser": "^1.15.2",
-    "casperjs": "^1.1.2",
     "express": "^4.13.4",
     "multer": "1.1.0",
     "nunjucks": "^2.3.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "mysql": "^2.11.1"
   }
 }
