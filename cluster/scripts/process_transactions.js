@@ -4,7 +4,7 @@
 var fs = require('fs'), xml2js = require('xml2js');
 var parser = new xml2js.Parser();
 var mysql = require('mysql');
-var dbconfig = require('../config/database');
+var dbconfig = require('../config/credentials/database');
 var connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
 

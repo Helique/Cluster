@@ -99,7 +99,8 @@ EOF
 }
 
 function installMySQL {
-	export DEBIAN_FRONTEND=noninteractive
+	sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+	sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 	sudo -E apt-get -q -o Acquire::ForceIPv4=true --yes install mysql-server
 }
 
