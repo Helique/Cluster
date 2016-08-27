@@ -5,7 +5,6 @@ connection.query('USE ' + dbconfig.database);
 
 var regex = {};
 regex.create = function(regex, category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
     }
@@ -18,7 +17,6 @@ regex.create = function(regex, category_name, callback){
 };
 
 regex.get = function(regex, category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         var rows = connection.query("SELECT * FROM " + dbconfig.regex_table, null, function (err, rows) {
             return callback(rows);
@@ -41,7 +39,6 @@ regex.update = function(id, regex, callback){
 };
 
 regex.deleteRegex = function(id, callback){
-    console.log(id);
     if(id == undefined){
         return callback({"err": "id is null", "errno": 2});
     } else {
@@ -53,7 +50,6 @@ regex.deleteRegex = function(id, callback){
 };
 
 regex.deleteAll = function(category_name, callback){
-    console.log(category_name);
     if(category_name == undefined){
         return callback({"err": "category_name is null", "errno": 2});
     } else {

@@ -17,7 +17,7 @@ var storage =   multer.diskStorage({
     }
 });
 
-router.post('/api/1.0/photo',function(req,res){
+router.post('/photo',function(req,res){
     upload(req,res,function(err) {
         if(err) {
             console.log(err);
@@ -27,7 +27,7 @@ router.post('/api/1.0/photo',function(req,res){
     });
 });
 
-router.get('/api/1.0/charge',function(req, res, info){
+router.get('/charge',function(req, res, info){
     if(req.query.start_date != undefined && req.query.end_date != undefined) {
         charge_model.getRange(req.query.start_date, req.query.end_date, function (response) {
             res.json(response);
@@ -39,7 +39,7 @@ router.get('/api/1.0/charge',function(req, res, info){
     }
 });
 
-router.post('/api/1.0/charge',function(req, res, info){
+router.post('/charge',function(req, res, info){
     if(req.body.id){
         charge_model.update(req.body.id, req.body.category_id, function(response){
             res.json(response);
@@ -51,13 +51,13 @@ router.post('/api/1.0/charge',function(req, res, info){
     }
 });
 
-router.get('/api/1.0/category',function(req,res){
+router.get('/category',function(req,res){
     category_model.get(req.body.category_name, function(response){
         res.json(response);
     });
 });
 
-router.post('/api/1.0/category',function(req, res, info){
+router.post('/category',function(req, res, info){
     if(req.body.id){
         category_model.update(req.body.id, req.body.category_name, function(response){
             res.json(response);
@@ -69,13 +69,13 @@ router.post('/api/1.0/category',function(req, res, info){
     }
 });
 
-router.get('/api/1.0/category/:category_name/regex',function(req,res){
+router.get('/category/:category_name/regex',function(req,res){
     regex_model.get(null, req.params.category_name, function(response){
         res.json(response);
     });
 });
 
-router.delete('/api/1.0/category/:category_name',function(req,res){
+router.delete('/category/:category_name',function(req,res){
     regex_model.deleteAll(req.params.category_name, function(response){
         category_model.delete(req.params.category_name, function(response){
             res.json(response);
@@ -83,7 +83,7 @@ router.delete('/api/1.0/category/:category_name',function(req,res){
     });
 });
 
-router.post('/api/1.0/category/:category_name/regex',function(req,res){
+router.post('/category/:category_name/regex',function(req,res){
     if(req.body.id == undefined) {
         regex_model.create(req.body.regex, req.params.category_name, function (response) {
             res.json(response);
@@ -95,7 +95,7 @@ router.post('/api/1.0/category/:category_name/regex',function(req,res){
     }
 });
 
-router.delete('/api/1.0/category/:category_name/regex/:regex_id',function(req,res){
+router.delete('/category/:category_name/regex/:regex_id',function(req,res){
     regex_model.deleteRegex(req.params.regex_id, function(response){
         res.json(response);
     });

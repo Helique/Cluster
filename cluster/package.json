@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Helique/Cluster#readme",
   "dependencies": {
+    "angular-route": "^1.5.8",
     "body-parser": "^1.15.2",
     "casperjs": "^1.1.2",
     "express": "^4.13.4",
