@@ -1,6 +1,6 @@
 #!/bin/bash
 cd casperjs
-casperjs login.js
+casperjs sierra_central.js
 cd ..
 mkdir transactions
 mv casperjs/*.qfx transactions/
