@@ -4,6 +4,8 @@
 # Installs the following software:
 # - NodeJS
 # - MySQL
+# - CasperJS
+# - PhantomJS
 
 # Functions
 function print {
@@ -88,6 +90,12 @@ function installOSDependencies {
 	done
 }
 
+function installCasperJS {
+    sudo npm install -g phantomjs
+    sudo npm install -g casperjs
+    sudo npm install -g xml2js
+}
+
 function installNodeJS {
 	curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 	cat <<EOF >> /etc/apt/sources.list.d/nodesource.list
@@ -119,6 +127,7 @@ installations=(
 	"installOSDependencies"
 	"installNodeJS"
 	"installMySQL"
+	"installCasperJS"
 	"finish"
 )
 
