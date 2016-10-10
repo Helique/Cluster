@@ -25,7 +25,7 @@ From the guest command line:
 
 `cd /vagrant/cluster`
 
-`node scripts/createdatabase.js` will populate the database with appropriate tables.
+`nodejs scripts/create_database.js` will populate the database with appropriate tables.
 
 ## Starting the Server
 From the guest command line:
