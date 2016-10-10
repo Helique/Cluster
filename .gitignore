@@ -1,5 +1,6 @@
 cluster/node_modules/
 .vagrant/
-cluster/npm-debug.log.*
+cluster/npm-debug.log*
 .DS_Store
 cluster/transactions
+.idea/
