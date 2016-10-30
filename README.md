@@ -16,7 +16,7 @@ From the guest command line:
 ## Generating untracked files for credentials
 From the guest command line:
 
-`cd /vagrant/cluster/scritps`
+`cd /vagrant/cluster/scripts`
 
 `./generate_credential.sh` will copy the template files from cluster/config/credentials_template to cluster/credentials, which is an untracked file. 
 
