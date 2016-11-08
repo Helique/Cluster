@@ -8,5 +8,6 @@ module.exports = {
   'categories_table': 'categories',
   'regex_table': 'regex',
   'charges_table': 'charges',
+  'users_table': 'users',
   'verification_table': 'verification_codes'
 }

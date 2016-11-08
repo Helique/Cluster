@@ -46,6 +46,18 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.charges_table + '` ( \
     UNIQUE INDEX `fitid_UNIQUE` (`fitid` ASC) \
 )');
 
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+    `email` CHAR(60) NOT NULL, \
+    `passhash` CHAR(60) NOT NULL, \
+    `name` CHAR(100) NOT NULL, \
+    `createdOn` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
+    PRIMARY KEY (`id`), \
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
+    UNIQUE INDEX `name_UNIQUE` (`name`) \
+)');
+
 console.log('Success: Database Created!')
 
 connection.end();

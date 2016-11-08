@@ -19,13 +19,17 @@
   },
   "homepage": "https://github.com/Helique/Cluster#readme",
   "dependencies": {
-    "angular-route": "^1.5.8",
     "angular": "1.5.8",
+    "angular-route": "^1.5.8",
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "express": "^4.13.4",
+    "express-session": "^1.14.2",
     "multer": "1.1.0",
+    "mysql": "^2.11.1",
     "nunjucks": "^2.3.0",
-    "request": "^2.72.0",
-    "mysql": "^2.11.1"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.72.0"
   }
 }

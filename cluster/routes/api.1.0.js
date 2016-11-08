@@ -3,6 +3,8 @@ var multer  =   require('multer');
 var router = express.Router();
 var fs = require('fs');
 
+var userAuth = require("./user_auth")
+
 var category_model = require("../models/categories");
 var charge_model = require("../models/charges");
 var regex_model = require("../models/regex");
@@ -16,6 +18,8 @@ var storage =   multer.diskStorage({
         callback(null, file.fieldname + '-' + Date.now());
     }
 });
+
+router.use('/user', userAuth);
 
 router.post('/photo',function(req,res){
     upload(req,res,function(err) {
@@ -65,7 +69,7 @@ router.post('/category',function(req, res, info){
     } else {
         category_model.create(req.body.category_name, function(response){
             res.json(response);
-        }); 
+        });
     }
 });
 
@@ -102,7 +106,7 @@ router.delete('/category/:category_name/regex/:regex_id',function(req,res){
 });
 
 router.get('/file', function(req,res){
-    
+
 });
 
 module.exports = router;

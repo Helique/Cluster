@@ -1,6 +1,6 @@
 #!/bin/bash
 # Provisioning script for Vagrant.
-# 
+#
 # Installs the following software:
 # - NodeJS
 # - MySQL
@@ -106,6 +106,11 @@ EOF
 	apt-get -o Acquire::ForceIPv4=true --yes install nodejs
 }
 
+function installG++ {
+	## needed for bcrypt
+	apt-get -o Acquire::ForceIPv4=true --yes install g++
+}
+
 function installMySQL {
 	sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 	sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
@@ -126,6 +131,7 @@ installations=(
 	"installOSUpdates"
 	"installOSDependencies"
 	"installNodeJS"
+	"installG++"
 	"installMySQL"
 	"installCasperJS"
 	"finish"
