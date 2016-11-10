@@ -2,6 +2,7 @@
  * Created by david.bernadett on 7/5/16.
  */
 var mysql = require('mysql');
+var async = require('async');
 var dbconfig = require('../config/credentials/database');
 var connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
@@ -35,6 +36,39 @@ charges.update = function(charge_id, category_id, callback){
         return callback({"err": "nothing to work with", "errno": 2});
     }
 };
+
+charges.saveTransactions = function (transactions, callback) {
+
+    function performQuery(data, callback) {
+      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (description, charge, memo, " +
+          "fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?)";
+      connection.query(insertQuery, data, callback);
+    }
+
+    var totalSpent = 0, datas = [];
+    for (var trans in transactions) {
+        //console.log("Trans: " + trans + ", " + transactions[trans].MEMO[0] + ", " + parseFloat(transactions[trans].TRNAMT[0]));
+        var trans = transactions[trans];
+        var fitid = parseInt(trans.FITID[0].replace("_", ""));
+        var trnamt = parseFloat(trans.TRNAMT[0]);
+        var date = trans.DTPOSTED[0].substr(0, 8);
+            date = date.slice(0, 4) + "-" + date.slice(4, 6) + "-" + date.slice(6, 8);
+        var memo = trans.MEMO[0];
+        var acc_bal = parseFloat(trans["USERS.STMT"][0].TRNBAL[0]);
+
+        var data = [memo, trnamt, memo, fitid, 0, date, acc_bal];
+        datas.push(data);
+
+        totalSpent += trnamt;
+    }
+
+    async.map(datas, performQuery, function(err, results) {
+      if (err) {
+        console.log(err);
+      }
+      callback(totalSpent);
+    });
+}
 
 
 

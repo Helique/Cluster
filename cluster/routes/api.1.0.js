@@ -3,13 +3,6 @@ var multer  =   require('multer');
 var router = express.Router();
 var fs = require('fs');
 
-var userAuth = require("./user_auth")
-
-var category_model = require("../models/categories");
-var charge_model = require("../models/charges");
-var regex_model = require("../models/regex");
-var upload = multer({ storage : storage}).single('userPhoto');
-
 var storage =   multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, './uploads');
@@ -19,14 +12,26 @@ var storage =   multer.diskStorage({
     }
 });
 
-router.use('/user', userAuth);
+var userAuthRouter = require("./user_auth");
+
+var category_model = require("../models/categories");
+var charge_model = require("../models/charges");
+var regex_model = require("../models/regex");
+var upload = multer({ storage : storage});
+var uploadUserPhoto = upload.single('userPhoto');
+
+var chargesRouter = require('./charges')(upload);
+
+router.use('/user', userAuthRouter);
+router.use('/charges', chargesRouter);
 
 router.post('/photo',function(req,res){
-    upload(req,res,function(err) {
+    uploadUserPhoto(req,res,function(err) {
         if(err) {
             console.log(err);
             return res.end("Error uploading file.");
         }
+        console.log(req.file);
         res.end("File is uploaded");
     });
 });

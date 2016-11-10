@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var user_model = require("../models/user");
+var user_model = require("../models/users");
 
 var bcrypt = require('bcrypt');
 var passport = require('passport');
@@ -33,16 +33,7 @@ passport.use(new LocalStrategy(
   }
 ));
 
-function mustBeLoggedIn(req, res, next) {
-  if (!req.user) {
-    res.status(401);
-    return res.end("Unauthorized");
-  }
-  next();
-}
-
-router.get('/name', mustBeLoggedIn, function(req, res) {
-  console.log(req.user);
+router.get('/name', user_model.mustBeLoggedIn, function(req, res) {
   res.end(req.user.name);
 });
 
