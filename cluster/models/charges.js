@@ -42,13 +42,17 @@ charges.getRange = function(user, start_date, end_date, callback){
     });
 };
 
-charges.update = function(charge_id, category_id, callback){
+charges.update = function(user, charge_id, category_id, callback){
     if(charge_id == undefined){
         return callback({"err": "charge.id is null", "errno": 2});
     }
+    if(user == undefined || user.id == undefined){
+        return callback({"err": "user or user.id is null", "errno": 2});
+    }
     if(category_id != undefined){
-        var updateQuery = "UPDATE " + dbconfig.charges_table + " SET category_id = ? WHERE id = ?";
-        var results = connection.query(updateQuery, [category_id, charge_id], function(err, rows){
+        var updateQuery = "UPDATE " + dbconfig.charges_table +
+          " SET category_id = ? WHERE id = ? AND user_id = ?";
+        var results = connection.query(updateQuery, [category_id, charge_id, user.id], function(err, rows){
             return callback(rows);
         });
     } else {
