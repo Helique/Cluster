@@ -3,6 +3,7 @@
  */
 var mysql = require('mysql');
 var async = require('async');
+var _ = require("lodash");
 var dbconfig = require('../config/credentials/database');
 var connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
@@ -37,26 +38,35 @@ charges.update = function(charge_id, category_id, callback){
     }
 };
 
-charges.saveTransactions = function (transactions, callback) {
+charges.saveTransactions = function (data, callback) {
+
+    var transactions = data.transactions;
+    var bank_id = data.bank_id;
+    var account_id = data.account_id;
+    var account_type = data.account_type;
 
     function performQuery(data, callback) {
-      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (description, charge, memo, " +
-          "fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?)";
-      connection.query(insertQuery, data, callback);
+      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (bank_id, account_id, account_type, " +
+      "description, charge, memo, fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?,?,?,?)";
+      connection.query(insertQuery, data, function(err, result) {
+        if (err) { console.log(err); callback(null, null); }
+        else { callback(null, result); }
+      });
     }
 
     var totalSpent = 0, datas = [];
     for (var trans in transactions) {
         //console.log("Trans: " + trans + ", " + transactions[trans].MEMO[0] + ", " + parseFloat(transactions[trans].TRNAMT[0]));
         var trans = transactions[trans];
-        var fitid = parseInt(trans.FITID[0].replace("_", ""));
+        //var fitid = parseInt(trans.FITID[0].replace("_", ""));
+        var fitid = trans.FITID[0];
         var trnamt = parseFloat(trans.TRNAMT[0]);
         var date = trans.DTPOSTED[0].substr(0, 8);
             date = date.slice(0, 4) + "-" + date.slice(4, 6) + "-" + date.slice(6, 8);
-        var memo = trans.MEMO[0];
-        var acc_bal = parseFloat(trans["USERS.STMT"][0].TRNBAL[0]);
+        var memo = _.get(trans, "NAME[0]") || _.get(trans, "MEMO[0]");
+        var acc_bal = parseFloat(_.get(trans, "USERS.STMT[0].TRNBAL[0]", "0"));
 
-        var data = [memo, trnamt, memo, fitid, 0, date, acc_bal];
+        var data = [bank_id, account_id, account_type, memo, trnamt, memo, fitid, 0, date, acc_bal];
         datas.push(data);
 
         totalSpent += trnamt;
