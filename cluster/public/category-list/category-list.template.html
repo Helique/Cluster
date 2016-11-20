@@ -1,4 +1,4 @@
-<button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Cateogry</button>
+<button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Category</button>
 <br>
 <ul class="categories table">
  <li>
@@ -20,7 +20,7 @@
      </form>
      <button ng-click="$ctrl.accountService.deleteRegex(category, regex, null)" class="btn btn-default">Delete</button>
     </li>
-    <li><input type="text" ng-model="new_regex" placeholder="Name"/><button ng-click="$ctrl.accountService.createRegex(category,new_regex,null)" class="btn btn-default">Create Cateogry</button></li>
+    <li><input type="text" ng-model="new_regex" placeholder="Name"/><button ng-click="$ctrl.accountService.createRegex(category,new_regex,null)" class="btn btn-default">Create Regex</button></li>
    </ul>
  </li>
 </ul>
