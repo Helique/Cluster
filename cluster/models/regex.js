@@ -11,7 +11,7 @@ regex.create = function(regex, category_name, callback){
     //var insertQuery = "INSERT INTO " + dbconfig.categories_table + " (category_name) VALUES (?) ON DUPLICATE KEY IGNORE";
     var insertQuery = "INSERT IGNORE INTO " + dbconfig.regex_table + " (regex, category_name) VALUES (?,?)";
     var results = connection.query(insertQuery, [regex, category_name], function(err, rows){
-        console.log(err);
+        //console.log(err);
         callback(callback({regex: regex, id: rows.insertId}));
     });
 };
