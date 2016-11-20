@@ -29,11 +29,10 @@ function parseQFX(xml_buffer, callback){
         }
         var transactions = result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].BANKTRANLIST[0].STMTTRN;
         var bank_info = result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].BANKACCTFROM[0];
-        var bank_id = bank_info.BANKID[0];
-        var account_id = bank_info.ACCTID[0];
+        var bank_id = parseInt(bank_info.BANKID[0]);
+        var account_id = parseInt(bank_info.ACCTID[0]);
         var account_type = bank_info.ACCTTYPE[0];
 
-        console.dir("Number of transactions: " + transactions.length);
         callback(null, {
           transactions: transactions,
           bank_id: bank_id,
