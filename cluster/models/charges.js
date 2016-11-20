@@ -10,16 +10,34 @@ connection.query('USE ' + dbconfig.database);
 var charges = {};
 
 
-charges.get = function(callback){
-    var getQuery = "SELECT "+ dbconfig.charges_table +".*, " + dbconfig.categories_table + ".category_name FROM " + dbconfig.charges_table + " LEFT JOIN " + dbconfig.categories_table +
-        " ON "+dbconfig.charges_table+".category_id="+ dbconfig.categories_table+".id";
-    var rows = connection.query(getQuery, [], function (err, rows) {
+charges.get = function(user, callback){
+    //SELECT charges.*  FROM charges INNER JOIN users ON users.id=charges.user_id WHERE users.id=1;
+
+    var getQuery = "SELECT "+ dbconfig.charges_table +".*, " +
+      dbconfig.categories_table + ".category_name FROM " + dbconfig.charges_table +
+       " LEFT JOIN " + dbconfig.categories_table + " ON "+
+       dbconfig.charges_table+".category_id="+ dbconfig.categories_table+".id" +
+       " INNER JOIN " + dbconfig.users_table + " ON " +
+       dbconfig.users_table + ".id=" + dbconfig.charges_table + ".user_id " +
+       "WHERE " + dbconfig.users_table + ".id=?";
+    var rows = connection.query(getQuery, [user.id], function (err, rows) {
+      if (err) console.log(err);
         return callback(rows);
     });
 };
 
-charges.getRange = function(start_date, end_date, callback){
-    var rows = connection.query("SELECT * FROM " + dbconfig.charges_table + " WHERE `date` BETWEEN ? and ?", [start_date, end_date], function (err, rows) {
+charges.getRange = function(user, start_date, end_date, callback){
+    var getQuery = "SELECT "+ dbconfig.charges_table +".*, " +
+      dbconfig.categories_table + ".category_name FROM " + dbconfig.charges_table +
+       " LEFT JOIN " + dbconfig.categories_table + " ON "+
+       dbconfig.charges_table+".category_id="+ dbconfig.categories_table+".id" +
+       " INNER JOIN " + dbconfig.users_table + " ON " +
+       dbconfig.users_table + ".id=" + dbconfig.charges_table + ".user_id " +
+       "WHERE " + dbconfig.users_table + ".id=? AND " +
+       dbconfig.users_table + ".date BETWEEN ? and ?";
+
+    var data = [user.id, start_date, end_date];
+    var rows = connection.query(getQuery, data, function (err, rows) {
         return callback(rows);
     });
 };
@@ -38,16 +56,17 @@ charges.update = function(charge_id, category_id, callback){
     }
 };
 
-charges.saveTransactions = function (data, callback) {
+charges.saveTransactions = function (data, user, callback) {
 
     var transactions = data.transactions;
     var bank_id = data.bank_id;
     var account_id = data.account_id;
     var account_type = data.account_type;
+    var user_id = user.id;
 
     function performQuery(data, callback) {
-      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (bank_id, account_id, account_type, " +
-      "description, charge, memo, fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?,?,?,?)";
+      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (user_id, bank_id, account_id, account_type, " +
+      "description, charge, memo, fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
       connection.query(insertQuery, data, function(err, result) {
         if (err) { console.log(err); callback(null, null); }
         else { callback(null, result); }
@@ -66,7 +85,7 @@ charges.saveTransactions = function (data, callback) {
         var memo = _.get(trans, "NAME[0]") || _.get(trans, "MEMO[0]");
         var acc_bal = parseFloat(_.get(trans, "USERS.STMT[0].TRNBAL[0]", "0"));
 
-        var data = [bank_id, account_id, account_type, memo, trnamt, memo, fitid, 0, date, acc_bal];
+        var data = [user_id, bank_id, account_id, account_type, memo, trnamt, memo, fitid, 0, date, acc_bal];
         datas.push(data);
 
         totalSpent += trnamt;

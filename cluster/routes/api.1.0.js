@@ -17,6 +17,7 @@ var userAuthRouter = require("./user_auth");
 var category_model = require("../models/categories");
 var charge_model = require("../models/charges");
 var regex_model = require("../models/regex");
+var user_model = require("../models/users");
 var upload = multer({ storage : storage});
 var uploadUserPhoto = upload.single('userPhoto');
 
@@ -36,13 +37,13 @@ router.post('/photo',function(req,res){
     });
 });
 
-router.get('/charge',function(req, res, info){
+router.get('/charge', user_model.mustBeLoggedIn, function(req, res, info){
     if(req.query.start_date != undefined && req.query.end_date != undefined) {
-        charge_model.getRange(req.query.start_date, req.query.end_date, function (response) {
+        charge_model.getRange(req.user, req.query.start_date, req.query.end_date, function (response) {
             res.json(response);
         });
     } else {
-        charge_model.get(function (response) {
+        charge_model.get(req.user, function (response) {
             res.json(response);
         });
     }
