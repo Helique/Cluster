@@ -1,4 +1,5 @@
 var request = require('supertest');
+var expect = require("chai").expect;
 
 describe('categories', function(){
   var url = 'http://127.0.0.1:8000';
@@ -15,8 +16,7 @@ describe('categories', function(){
         if(err) {
             throw err;
         }
-        res.status == 200;
-        //console.log(res);
+        expect(res.status).to.eql(200);
         done();
     });
   });

@@ -24,7 +24,7 @@ module.exports = function(upload) {
           return res.end("something went wrong");
         }
         charge_model.saveTransactions(transactions, function(totalSpent) {
-          res.end(totalSpent);
+          res.end("" + totalSpent);
         });
       });
     })
