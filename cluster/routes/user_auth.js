@@ -38,7 +38,12 @@ router.get('/name', user_model.mustBeLoggedIn, function(req, res) {
 });
 
 router.post('/auth', passport.authenticate('local'), function(req, res) {
-  res.end("you made it");
+  res.redirect("/");
+});
+
+router.use('/logout', function(req, res) {
+  req.logout();
+  res.redirect("/");
 });
 
 router.post('/create', function(req, res, next) {

@@ -11,7 +11,7 @@ module.exports = function(upload) {
 
   var router = express.Router();
 
-  router.post('/qfx', /*user_model.mustBeLoggedIn,*/ upload.single('QFX_File'), function(req, res) {
+  router.post('/qfx', user_model.mustBeLoggedIn, upload.single('QFX_File'), function(req, res) {
     fs.readFile(req.file.path, function(err, buffer) {
       if (err) {
         console.log(err);
@@ -23,7 +23,7 @@ module.exports = function(upload) {
           console.log(err);
           return res.end("something went wrong");
         }
-        charge_model.saveTransactions(transactions, function(totalSpent) {
+        charge_model.saveTransactions(transactions, req.user, function(totalSpent) {
           res.end("" + totalSpent);
         });
       });
