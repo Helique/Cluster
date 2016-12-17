@@ -85,6 +85,7 @@ chargeList.factory('accountService', function($http) {
 
     service.getCharges = function(callback){
         $http.get('/api/1.0/charge').then(function(response) {
+            console.log(response);
             if(callback)
                 callback(response.data);
         });
@@ -131,7 +132,7 @@ chargeList.factory('accountService', function($http) {
         service.charges = data;
         for (charge in service.charges) {
             service.charges[charge].date = new Date(service.charges[charge].date);
-        } 
+        }
     });
 
     service.getCategory(function(data){

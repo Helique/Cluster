@@ -51,7 +51,7 @@ router.get('/charge', user_model.mustBeLoggedIn, function(req, res, info){
 
 router.post('/charge',function(req, res, info){
     if(req.body.id){
-        charge_model.update(req.body.id, req.body.category_id, function(response){
+        charge_model.update(req.user, req.body.id, req.body.category_id, function(response){
             res.json(response);
         });
     } else {
