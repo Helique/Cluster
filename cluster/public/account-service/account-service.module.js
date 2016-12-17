@@ -32,7 +32,7 @@ chargeList.factory('accountService', function($http) {
     };
 
     service.deleteCategory = function(name, callback){
-        $http.delete('/api/1.0/category/'+ name).then(function(response){
+        $http.delete('/api/1.0/category/'+ encodeURIComponent(name)).then(function(response){
             var toDelete;
             for (category in service.categories) {
                 if(service.categories[category].category_name === name){
@@ -47,21 +47,21 @@ chargeList.factory('accountService', function($http) {
     };
 
     service.getRegex = function(category, callback){
-        $http.get('/api/1.0/category/' + category.category_name + "/regex").then(function (response) {
+        $http.get('/api/1.0/category/' + encodeURIComponent(category.category_name) + "/regex").then(function (response) {
             if(callback)
                 callback(response.data);
         });
     };
 
     service.updateRegex = function(category, regex, callback){
-        $http.post('/api/1.0/category/'+ category.category_name + "/regex", regex).then(function(response){
+        $http.post('/api/1.0/category/'+ encodeURIComponent(category.category_name) + "/regex", regex).then(function(response){
             if(callback)
                 callback(response.data);
         });
     };
 
     service.deleteRegex = function(category, regex, callback){
-        $http.delete('/api/1.0/category/'+ category.category_name + "/regex/" +regex.id).then(function(response){
+        $http.delete('/api/1.0/category/'+ encodeURIComponent(category.category_name) + "/regex/" +regex.id).then(function(response){
             var toDelete;
             for (cat_index in category.regex) {
                 if(category.regex[cat_index].id === regex.id){
@@ -76,7 +76,7 @@ chargeList.factory('accountService', function($http) {
     };
 
     service.createRegex = function(category, regex, callback){
-        $http.post('/api/1.0/category/'+ category.category_name + "/regex",{regex:regex}).then(function(response){
+        $http.post('/api/1.0/category/'+ encodeURIComponent(category.category_name) + "/regex",{regex:regex}).then(function(response){
             category.regex.push(response.data);
             if(callback)
                 callback(response.data);

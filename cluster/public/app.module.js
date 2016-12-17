@@ -6,7 +6,8 @@ var clusterApp =  angular.module('clusterApp', [
     'categoryList',
     'accountService',
     'navbar',
-    'ngRoute'
+    'ngRoute',
+    'reviewTab'
 ]);
 clusterApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
@@ -17,6 +18,6 @@ clusterApp.config(function($routeProvider, $locationProvider) {
             template: "<charge-list></charge-list>"
         })
         .when('/review', {
-            template: "Go review yourself"
+            template: "<review-tab></review-tab>"
         })
 });
