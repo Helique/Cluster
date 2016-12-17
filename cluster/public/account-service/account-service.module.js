@@ -7,6 +7,21 @@ chargeList.factory('accountService', function($http) {
     var service = {};
     service.categories = [];
     service.charges = [];
+    service.user = {};
+    service.authOptions = {
+        loggedIn: [{title:service.user.name,url:"accountProfile"},{title:"Upload",url:"/upload.html"},{title:"Logout", url:"/api/1.0/user/logout"}],
+        loggedOut: [{title:"Login",url:"/login.html"},{title:"Sign-Up", url:"/signup.html"}]
+    };
+    service.loggedIn = false;
+
+
+    service.getUser = function(callback){
+        $http.get('/api/1.0/user/name').then(function(response) {
+            if(callback)
+                callback(response.data);
+        });
+    };
+
     service.getCategory = function(callback){
         $http.get('/api/1.0/category').then(function(response) {
             if(callback)
@@ -85,7 +100,6 @@ chargeList.factory('accountService', function($http) {
 
     service.getCharges = function(callback){
         $http.get('/api/1.0/charge').then(function(response) {
-            console.log(response);
             if(callback)
                 callback(response.data);
         });
@@ -128,21 +142,33 @@ chargeList.factory('accountService', function($http) {
             callback(true);
     };
 
-    service.getCharges(function(data){
-        service.charges = data;
-        for (charge in service.charges) {
-            service.charges[charge].date = new Date(service.charges[charge].date);
+    service.getUser(function(response){
+        if(response){
+            service.loggedIn = true;
+            service.user.name = response;
+            service.authOptions.loggedIn[0].title=service.user.name;
+        }
+        if(service.loggedIn) {
+            service.getCharges(function (data) {
+                service.charges = data;
+                for (charge in service.charges) {
+                    service.charges[charge].date = new Date(service.charges[charge].date);
+                }
+            });
+
+            service.getCategory(function (data) {
+                service.categories = data;
+                angular.forEach(service.categories, function (value, key) {
+                    service.getRegex(value, function (regex_data) {
+                        value.regex = regex_data;
+                    });
+                });
+            });
         }
     });
 
-    service.getCategory(function(data){
-        service.categories = data;
-        angular.forEach(service.categories, function (value, key) {
-            service.getRegex(value, function (regex_data) {
-                value.regex = regex_data;
-            });
-        });
-    });
+
+
 
     return service;
 });

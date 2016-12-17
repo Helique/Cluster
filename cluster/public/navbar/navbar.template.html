@@ -28,9 +28,11 @@
                     </ul>
                 </li>-->
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a>V0.1</a></li>
-                <li><a href="/static/login.html">Login</a></li>
+            <ul ng-if="$ctrl.accountService.loggedIn" class="nav navbar-nav navbar-right">
+                <li ng-repeat= "link in $ctrl.accountService.authOptions.loggedIn"><a href={{link.url}}>{{link.title}}</a></li>
+            </ul>
+            <ul ng-if="!$ctrl.accountService.loggedIn" class="nav navbar-nav navbar-right">
+                <li ng-repeat= "link in $ctrl.accountService.authOptions.loggedOut"><a href={{link.url}}>{{link.title}}</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
