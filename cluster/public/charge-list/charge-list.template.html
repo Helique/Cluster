@@ -1,42 +1,64 @@
-<div>
-    <form name="order">
-        <label for="ordering"> Sort By: </label><br>
-        <select name="singleSelect" ng-model="$ctrl.ordering">
-            <option value="-date">Newest First</option>
-            <option value="date">Oldest First</option>
-        </select><br>
-    </form>
-</div>
-<div>
-    <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
-</div>
-<div>
-    <label>Show only Uncategorized:</label>
-    <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
-    <label>Start Date:</label>
-    <input type="date"
-           ng-model="startDate"/>
-    <label>End Date:</label>
-    <input type="date"
-           ng-model="endDate"/>
-</div>
-<div>
-    <span>Total Expenses: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0 | number:2}}</span><span> Total Income: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null | number:2}}</span>
+<div class="row">
 
+    <div class="col-md-2">
+        <!--Sidebar content-->
+        <category-list></category-list>
+        <div>
+            <button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Category</button>
+            <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
+
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <table class="table charges">
+            <thead>
+            <tr>
+                <th>Memo:</th>
+                <th>Category:</th>
+                <th>Charge Ammount:</th>
+                <th>Date:</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="charge in ($ctrl.accountService.charges | orderBy:$ctrl.ordering | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch)">
+                <td>{{charge.memo}}</td>
+                <td>{{charge.category_name}}</td>
+                <td>{{charge.charge}}</td>
+                <td>{{(charge.date.getMonth()+1) + "/"
+                    + (charge.date.getDate()+1)  + "/"
+                    + charge.date.getFullYear()}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2">
+        <div>
+            <charge-search></charge-search>
+        </div>
+        <br>
+        <div>
+            <form name="order">
+                <label for="ordering"> Sort By: </label>
+                <select name="singleSelect" ng-model="$ctrl.ordering">
+                    <option value="-date">Newest First</option>
+                    <option value="date">Oldest First</option>
+                </select><br>
+            </form>
+        </div>
+        <br>
+        <div>
+            <label>Show only Uncategorized:</label>
+            <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
+            <label>Start Date:</label>
+            <input type="date"
+                   ng-model="startDate"/>
+            <label>End Date:</label>
+            <input type="date"
+                   ng-model="endDate"/>
+        </div>
+        <div>
+            <span>Total Expenses: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0 | number:2}}</span><span> Total Income: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null | number:2}}</span>
+
+        </div>
+
+    </div>
 </div>
-<table class="charges table">
-    <tr>
-        <td><b>Memo:</b></td>
-        <td><b>Category:</b></td>
-        <td><b>Charge Ammount:</b></td>
-        <td><b>Date:</b></td>
-    </tr>
-    <tr ng-repeat="charge in ($ctrl.accountService.charges | orderBy:$ctrl.ordering | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch)">
-        <td>{{charge.memo}}</td>
-        <td>{{charge.category_name}}</td>
-        <td>{{charge.charge}}</td>
-        <td>{{(charge.date.getMonth()+1) + "/"
-            + (charge.date.getDate()+1)  + "/"
-            + charge.date.getFullYear()}}</td>
-    </tr>
-</table>
