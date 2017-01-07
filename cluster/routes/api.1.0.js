@@ -12,8 +12,6 @@ var storage =   multer.diskStorage({
     }
 });
 
-var userAuthRouter = require("./user_auth");
-
 var category_model = require("../models/categories");
 var charge_model = require("../models/charges");
 var regex_model = require("../models/regex");
@@ -21,10 +19,13 @@ var user_model = require("../models/users");
 var upload = multer({ storage : storage});
 var uploadUserPhoto = upload.single('userPhoto');
 
+var userAuthRouter = require("./user_auth");
 var chargesRouter = require('./charges')(upload);
+var bankAccountsRouter = require("./bank_accounts");
 
 router.use('/user', userAuthRouter);
 router.use('/charges', chargesRouter);
+router.use('/bankAccounts', bankAccountsRouter);
 
 router.post('/photo',function(req,res){
     uploadUserPhoto(req,res,function(err) {

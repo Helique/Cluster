@@ -9,7 +9,6 @@ var init_db = require('./initialize_database');
 
 var connection = mysql.createConnection(dbconfig.connection);
 
-
 connection.query('CREATE DATABASE ' + dbconfig.database, function(err, results) {
   if (err) {
     return console.log(err);

@@ -35,7 +35,7 @@ function createRegex(callback) {
 function createBanks(callback) {
   connection.query('\
   CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.banks_table + '` ( \
-      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+      `id` INT UNSIGNED NOT NULL, \
       PRIMARY KEY (`id`), \
       `name` TEXT NOT NULL \
   )', callback);
@@ -94,7 +94,7 @@ function setupBanks(callback) {
   var functions = dbconfig.banks.map(function(bank) {
     return function(callback) {
       connection.query(`INSERT INTO ` + dbconfig.database + '.' + dbconfig.banks_table +
-        ` (name) VALUES (?)`, [bank.name], callback);
+        ` (id, name) VALUES (?, ?)`, [bank.id, bank.name], callback);
     }
   });
 
@@ -105,8 +105,8 @@ function setupBanks(callback) {
 }
 
 module.exports = function(callback) {
-  var functions = [createCategories, createRegex, createBanks, createBankAccounts,
-    createCharges, createUsers, setupBanks];
+  var functions = [createCategories, createUsers, createRegex, createBanks, createBankAccounts,
+    createCharges, setupBanks];
 
   // series because some functions need to finish before others can start
   // due to foreign keys
