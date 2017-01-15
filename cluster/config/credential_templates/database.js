@@ -9,5 +9,13 @@ module.exports = {
   'regex_table': 'regex',
   'charges_table': 'charges',
   'users_table': 'users',
-  'verification_table': 'verification_codes'
+  'bank_accounts_table': 'bank_accounts',
+  'banks_table': 'banks',
+  'verification_table': 'verification_codes',
+  'banks': [
+    {
+      'id': 1,
+      'name': 'Mechanics Bank',
+    }
+  ],
 }
