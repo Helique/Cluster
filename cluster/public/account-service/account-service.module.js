@@ -8,8 +8,15 @@ chargeList.factory('accountService', function($http) {
     service.categories = [];
     service.charges = [];
     service.user = {};
+    service.capitalize = function(txt){
+        console.log(txt);
+        if(txt == null)
+            return null;
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+
     service.authOptions = {
-        loggedIn: [{title:service.user.name,url:"accountProfile"},{title:"Upload",url:"/upload.html"},{title:"Logout", url:"/api/1.0/user/logout"}],
+        loggedIn: [{title:service.user.displayName,url:"/#/profile"},{title:"Upload",url:"/upload.html"},{title:"Logout", url:"/api/1.0/user/logout"}],
         loggedOut: [{title:"Login",url:"/login.html"},{title:"Sign-Up", url:"/signup.html"}]
     };
     service.loggedIn = false;
@@ -146,7 +153,7 @@ chargeList.factory('accountService', function($http) {
         if(response){
             service.loggedIn = true;
             service.user.name = response;
-            service.authOptions.loggedIn[0].title=service.user.name;
+            service.authOptions.loggedIn[0].title=service.capitalize(service.user.name);
         }
         if(service.loggedIn) {
             service.getCharges(function (data) {
