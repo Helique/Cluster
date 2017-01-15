@@ -22,10 +22,12 @@ var uploadUserPhoto = upload.single('userPhoto');
 var userAuthRouter = require("./user_auth");
 var chargesRouter = require('./charges')(upload);
 var bankAccountsRouter = require("./bank_accounts");
+var banksRouter = require("./banks");
 
 router.use('/user', userAuthRouter);
 router.use('/charges', chargesRouter);
 router.use('/bankAccounts', bankAccountsRouter);
+router.use('/banks', banksRouter);
 
 router.post('/photo',function(req,res){
     uploadUserPhoto(req,res,function(err) {
