@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var charge_model = require("../models/charges");
 var user_model = require("../models/users");
-var transactionProcessor = require("../helpers/transaction_processor")
+var transactionProcessor = require("../helpers/transactions/processor")
 
 
 module.exports = function(upload) {
