@@ -1,13 +1,14 @@
 <div class="row">
 
     <div class="col-md-2">
+        <div>
+            <button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Category <span style="color:green" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+            <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default pull-right">Categorize <span style="color:blue" class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+        </div>
+        <br>
         <!--Sidebar content-->
         <category-list></category-list>
-        <div>
-            <button ng-click="$ctrl.accountService.createCategory('New Category',null)" class="btn btn-default">Create Category</button>
-            <button ng-click="$ctrl.accountService.categorize(null)" class="btn btn-default">Categorize</button>
 
-        </div>
     </div>
 
     <div class="col-md-8">
@@ -51,16 +52,20 @@
         <div>
             <label>Show only Uncategorized:</label>
             <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
+            <br>
             <label>Start Date:</label>
             <input type="date"
                    ng-model="startDate"/>
+            <br>
             <label>End Date:</label>
             <input type="date"
                    ng-model="endDate"/>
         </div>
 
         <div>
-            <span>Total Expenses: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0 | number:2}}</span><span> Total Income: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null | number:2}}</span>
+            Total Expenses: <span class="pull-right" style="color:red;font-weight:bold">{{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0 | number:2}}</span>
+            <br>
+            Total Income: <span class="pull-right" style="color:green;font-weight:bold">{{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null | number:2}}</span>
         </div>
 
     </div>
