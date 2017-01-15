@@ -2,7 +2,7 @@ var dbconfig = require('../../config/credentials/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
 
-var bank = dbconfig.banks[0];
+var bank = dbconfig.banks["Mechanics Bank"];
 
 function add(user, bankInfo, callback) {
   // INSERT INTO bankaccounts

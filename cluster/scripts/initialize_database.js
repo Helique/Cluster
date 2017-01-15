@@ -46,8 +46,11 @@ function createBankAccounts(callback) {
   CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.bank_accounts_table + '` ( \
       `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
       PRIMARY KEY (`id`), \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
       `bank_id` INT UNSIGNED, \
-      FOREIGN KEY(bank_id) REFERENCES ' + dbconfig.database + "." + dbconfig.banks_table + '(id) \
+      FOREIGN KEY(bank_id) REFERENCES ' + dbconfig.database + "." + dbconfig.banks_table + '(id), \
+      `collection_count` BIGINT UNSIGNED DEFAULT 0 \
   )', callback);
 }
 
@@ -91,10 +94,12 @@ function createUsers(callback) {
 
 
 function setupBanks(callback) {
-  var functions = dbconfig.banks.map(function(bank) {
+  var banks = Object.keys(dbconfig.banks);
+  var functions = banks.map(function(bank) {
     return function(callback) {
+      bank_data = dbconfig.banks[bank];
       connection.query(`INSERT INTO ` + dbconfig.database + '.' + dbconfig.banks_table +
-        ` (id, name) VALUES (?, ?)`, [bank.id, bank.name], callback);
+        ` (id, name) VALUES (?, ?)`, [bank_data.id, bank_data.name], callback);
     }
   });
 
