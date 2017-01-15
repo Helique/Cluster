@@ -30,6 +30,7 @@
             </tr>
         </table>
     </div>
+
     <div class="col-md-2">
         <div>
             <charge-search></charge-search>
@@ -44,7 +45,9 @@
                 </select><br>
             </form>
         </div>
+
         <br>
+
         <div>
             <label>Show only Uncategorized:</label>
             <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
@@ -55,9 +58,9 @@
             <input type="date"
                    ng-model="endDate"/>
         </div>
+
         <div>
             <span>Total Expenses: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:null:0 | number:2}}</span><span> Total Income: {{($ctrl.accountService.charges | dateBetween:startDate:endDate | filter:$ctrl.filterByCategory | filter:$ctrl.chargeService.transactionSearch) | sum:0:null | number:2}}</span>
-
         </div>
 
     </div>
