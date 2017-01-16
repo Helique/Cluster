@@ -19,19 +19,30 @@ casper.options.waitTimeout = 45000;
 
 casper.start('https://mechanicsbank.com/mechbank/Mbwebsite.nsf/home/index');
 
+casper.wait(5000, function() {
+    this.echo("Done waiting.");
+});
+
 casper.then(function() {
 
     this.echo('First Page: ' + this.getTitle());
     this.fill('form#Login',
-        {
+      {
 			'userid':mechanics_central.username,
 			'password':mechanics_central.password
 		},
     true);
 });
 
+count = 0;
 casper.waitFor(function check() {
-	return this.getTitle() != "";
+  if (count == 30) {
+    count = 0;
+    console.log(this.getTitle());
+    console.log(this.getCurrentUrl());
+  }
+  count++;
+	return this.getTitle().indexOf("Verify your identity") != -1
 }, function then() {
   this.echo('Second Page: ' + this.getTitle());
   if (this.getTitle().indexOf("Verify your identity") != -1) {
@@ -76,7 +87,7 @@ casper.thenOpen("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/com.d
     console.log(accountId);
     casper.then(function() {
       console.log("downloading");
-      this.download("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/app/ajax/history/transactionsQFX", "Mechanics.qfx", "POST", {
+      this.download("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/app/ajax/history/transactionsQFX", casper.cli.args[0] + ".qfx", "POST", {
         rftoken: rftoken,
         locationId: "",
         accountId: accountId,

@@ -4,7 +4,7 @@
  */
 
 var fs = require('fs');
-var casper = require('casper').create({verbose: true,  logLevel: 'debug'});
+var casper = require('casper').create({verbose: true, logLevel: 'debug'});
 //var system = require('system');
 //var mechanics_central =  require('../config/credentials/mechanics_central');
 

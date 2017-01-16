@@ -41,4 +41,14 @@ router.get("/update", function(req, res) {
   })
 });
 
+router.post("/verify", function(req, res) {
+  bankAccounts.onVerification(req.user, req.body.code, req.body.bank_id, function(err, results) {
+    if (err) {
+      console.log(err);
+      return res.end("Something went wrongo");
+    }
+    res.json(results);
+  })
+});
+
 module.exports = router;

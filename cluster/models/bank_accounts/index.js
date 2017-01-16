@@ -36,8 +36,14 @@ function update(user, callback) {
     });
 }
 
+function onVerification(user, code, bank_id, callback) {
+  console.log("verifying " + code + ", " + bank_id);
+  transactionsManager.onVerification(user, code, bank_id, callback);
+};
+
 module.exports = {
   add: add,
   getAll: getAll,
-  update: update
+  update: update,
+  onVerification: onVerification
 };
