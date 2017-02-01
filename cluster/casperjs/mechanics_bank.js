@@ -87,7 +87,7 @@ casper.thenOpen("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/com.d
     console.log(accountId);
     casper.then(function() {
       console.log("downloading");
-      this.download("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/app/ajax/history/transactionsQFX", casper.cli.args[0] + ".qfx", "POST", {
+      this.download("https://www.mechanicsbankonline.com/tob/live/usp-core/sdp/app/ajax/history/transactionsQFX", casper.cli.args[0], "POST", {
         rftoken: rftoken,
         locationId: "",
         accountId: accountId,

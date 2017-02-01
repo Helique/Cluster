@@ -5,7 +5,7 @@ var xml2js = require('xml2js');
 var parser = new xml2js.Parser();
 
 function parseQFX(xml_buffer, callback){
-    for (var i = 0; xml_buffer[i] != 60; i++) {
+    for (var i = 0; xml_buffer[i] != 60 && i < xml_buffer.length; i++) {
       xml_buffer[i] = 32;
     }
     xml = xml_buffer.toString();

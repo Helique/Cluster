@@ -2,6 +2,10 @@ var dbconfig = require('../../config/credentials/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
 var childProcess = require('child_process');
+var transactionProcessor = require("./processor");
+var charges = require('../../models/charges');
+var fs = require("fs");
+
 
 var bank_data = dbconfig.banks["Mechanics Bank"];
 
@@ -14,9 +18,11 @@ function updateTransactions(user) {
     dbconfig.database + '.' + dbconfig.bank_accounts_table + " WHERE user_id=? AND bank_id=?",
     [user.id, bank_data.id], function(err, results) {
       var count = results[0].collection_count;
+      console.log(count);
       var bankAccountId = results[0].id;
       var cmd = './helpers/transactions/scripts/getTransactionsMechanics.sh';
-      var process = childProcess.spawn(cmd, ["Mechanics" + count]);
+      var filename = "Mechanics" + count + ".qfx";
+      var process = childProcess.spawn(cmd, [filename]);
       processes[user.id] = process;
 
       process.stdout.on("data", function(data) {
@@ -24,6 +30,7 @@ function updateTransactions(user) {
       });
 
       process.on("close", function(code) {
+        processTransactions(filename, user);
         processes[user.id] = undefined;
       });
 
@@ -31,14 +38,17 @@ function updateTransactions(user) {
         " SET collection_count = collection_count + 1 WHERE id=?", [bankAccountId], function(err, results) {
       });
 
-      //process.stdin.write('1 + 1');
-      //process.stdin.end();
-
-      // exec(cmd, function(error, stdout, stderr) {
-      //   console.log(error, stdout, stderr, results[0]);
-      // });
-
     });
+}
+
+function processTransactions(filename, user) {
+  fs.readFile("./transactions/" + filename, function(err, data) {
+    transactionProcessor.parseQFX(data, function(err, transactions) {
+      charges.saveTransactions(transactions, user, function(err, result) {
+        //
+      });
+    });
+  });
 }
 
 function onVerification(user, code, callback) {
