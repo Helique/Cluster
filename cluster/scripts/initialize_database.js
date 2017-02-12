@@ -92,6 +92,91 @@ function createUsers(callback) {
   )', callback);
 }
 
+function createReviews(callback) {
+  connection.query('\
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.review_table + '` ( \
+      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+      PRIMARY KEY (`id`), \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
+      `name` CHAR(60), \
+      `date_start` DATE,\
+      `date_end` DATE,\
+      `money_out` DOUBLE,\
+      `money_in` DOUBLE, \
+      `goal_id` INT UNSIGNED default NULL \
+  )', callback);
+}
+
+function createGoals(callback) {
+  connection.query('\
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.goal_table + '` ( \
+      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+      PRIMARY KEY (`id`), \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
+      `name` CHAR(60), \
+      `spd_min` DOUBLE,\
+      `spd_max` DOUBLE,\
+      `money_max` DOUBLE,\
+      `money_min` DOUBLE,\
+     `review_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY (review_id) REFERENCES ' + dbconfig.database + "." + dbconfig.review_table + '(id) \
+  )', callback);
+}
+
+function addKeys(callback){
+  connection.query('\
+  ALTER TABLE `' + dbconfig.database + '`.`' + dbconfig.review_table + '` \
+     ADD FOREIGN KEY (goal_id) REFERENCES ' + dbconfig.database + "." + dbconfig.goal_table + '(id) \
+  ', callback);
+}
+
+function createRegexReviewPivot(callback) {
+  connection.query('\
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.regex_review_pivot_table + '` ( \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
+      `regex_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(regex_id) REFERENCES ' + dbconfig.database + "." + dbconfig.regex_table + '(id), \
+      `review_id` INT UNSIGNED, \
+      FOREIGN KEY(review_id) REFERENCES ' + dbconfig.database + "." + dbconfig.review_table + '(id), \
+      `money_out` DOUBLE,\
+      `money_in` DOUBLE,\
+      `exclude` TINYINT(1) \
+  )', callback);
+}
+
+function createCategoryReviewPivot(callback) {
+  connection.query('\
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.category_review_pivot_table + '` ( \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
+      `category_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(category_id) REFERENCES ' + dbconfig.database + "." + dbconfig.categories_table + '(id), \
+      `review_id` INT UNSIGNED, \
+      FOREIGN KEY(review_id) REFERENCES ' + dbconfig.database + "." + dbconfig.review_table + '(id), \
+      `money_out` DOUBLE,\
+      `money_in` DOUBLE,\
+      `exclude` TINYINT(1) \
+  )', callback);
+}
+
+function createChargeReviewPivot(callback) {
+  connection.query('\
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.charge_review_pivot_table + '` ( \
+      `user_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \
+      `charge_id` INT UNSIGNED NOT NULL, \
+      FOREIGN KEY(charge_id) REFERENCES ' + dbconfig.database + "." + dbconfig.charges_table + '(id), \
+      `review_id` INT UNSIGNED, \
+      FOREIGN KEY(review_id) REFERENCES ' + dbconfig.database + "." + dbconfig.review_table + '(id), \
+      `subtransaction` INT UNSIGNED DEFAULT 0, \
+      `override` TINYINT(1), \
+      `exclude` TINYINT(1) \
+  )', callback);
+}
+
 
 function setupBanks(callback) {
   var banks = Object.keys(dbconfig.banks);
@@ -111,7 +196,7 @@ function setupBanks(callback) {
 
 module.exports = function(callback) {
   var functions = [createCategories, createUsers, createRegex, createBanks, createBankAccounts,
-    createCharges, setupBanks];
+    createCharges, createReviews, createGoals, addKeys, createRegexReviewPivot, createCategoryReviewPivot, createChargeReviewPivot, setupBanks];
 
   // series because some functions need to finish before others can start
   // due to foreign keys
