@@ -65,9 +65,7 @@ casper.then(function() {
     var link = this.getElementAttribute('#ctl01_Main1_AccountHistoryUC_TPDownloadsBtn', 'onclick')
     var String = link.substring(link.indexOf("'")+1,link.lastIndexOf("'"));
     this.echo(String);
-    var today = new Date();
-    this.download("https://sccupcu.com"+String,
-        today.getFullYear() +"_" + (today.getMonth() + 1) +"_"+ today.getDate() +"_"+today.getHours()+"_"+today.getMinutes()+"_"+today.getSeconds()+".qfx");
+    this.download("https://sccupcu.com"+String, casper.cli.args[0]);
     this.echo('Fifth: ' + this.getCurrentUrl());
 });
 /*casper.thenOpen('http://phantomjs.org', function() {

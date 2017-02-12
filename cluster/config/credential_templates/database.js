@@ -12,10 +12,14 @@ module.exports = {
   'bank_accounts_table': 'bank_accounts',
   'banks_table': 'banks',
   'verification_table': 'verification_codes',
-  'banks': [
-    {
+  'banks': {
+    "Mechanics Bank": {
       'id': 1,
       'name': 'Mechanics Bank',
+    },
+    "Sierra Central": {
+      'id': 2,
+      'name': 'Sierra Central'
     }
-  ],
+  },
 }

@@ -7,7 +7,7 @@ var charges = require('../../models/charges');
 var fs = require("fs");
 
 
-var bank_data = dbconfig.banks["Mechanics Bank"];
+var bank_data = dbconfig.banks["Sierra Central"];
 
 
 var processes = {};
@@ -17,17 +17,15 @@ function updateTransactions(user) {
   connection.query("SELECT id,collection_count FROM " +
     dbconfig.database + '.' + dbconfig.bank_accounts_table + " WHERE user_id=? AND bank_id=?",
     [user.id, bank_data.id], function(err, results) {
-
-      console.log("update for mechanics commencing");
       var count = results[0].collection_count;
       var bankAccountId = results[0].id;
-      console.log(count);
+      console.log("update for sierra commencing");
 
-      var cmd = './helpers/transactions/scripts/getTransactionsMechanics.sh';
+      var cmd = './helpers/transactions/scripts/getTransactionsSierra.sh';
 
       var today = new Date();
-      var filename = "Mechanics" + today.getFullYear() +"_" + (today.getMonth() + 1) +"_"+ today.getDate() +"_"+today.getHours()+"_"+today.getMinutes()+"_"+today.getSeconds()+".qfx"
-      //var filename = "Mechanics" + count + ".qfx";
+      var filename = "Sierra" + today.getFullYear() +"_" + (today.getMonth() + 1) +"_"+ today.getDate() +"_"+today.getHours()+"_"+today.getMinutes()+"_"+today.getSeconds()+".qfx"
+      //var filename = "Sierra" + count + ".qfx";
 
       var process = childProcess.spawn(cmd, [filename]);
       processes[user.id] = process;

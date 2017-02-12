@@ -1,4 +1,5 @@
 var Mechanics = require("./mechanics");
+var Sierra = require("./sierra");
 var dbconfig = require('../../config/credentials/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
@@ -10,7 +11,9 @@ function add(user, bankInfo, callback) {
   if (name == "Mechanics Bank") {
     Mechanics.add(user, bankInfo, callback);
   }
-  // else if (name == "...") { }
+  if (name == "Sierra Central") {
+    Sierra.add(user, bankInfo, callback);
+  }
   else {
     callback(new Error("Bank named " + name + " not supported"));
   }
