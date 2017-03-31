@@ -1,6 +1,24 @@
 /**
  * Created by david.bernadett on 7/31/16.
  */
+
+ (function() {
+    Date.prototype.toYMD = Date_toYMD;
+    function Date_toYMD() {
+        var year, month, day;
+        year = String(this.getFullYear());
+        month = String(this.getMonth() + 1);
+        if (month.length == 1) {
+            month = "0" + month;
+        }
+        day = String(this.getDate());
+        if (day.length == 1) {
+            day = "0" + day;
+        }
+        return year + month + day;
+    }
+})();
+
 var chargeList = angular.module('accountService', []);
 chargeList.factory('accountService', function($http) {
 
@@ -110,7 +128,16 @@ chargeList.factory('accountService', function($http) {
             if(callback)
                 callback(response.data);
         });
-        
+
+    };
+
+    service.getChargesBetweenDates = function(start_date, end_date, callback){
+        $http.get('/api/1.0/charge?start_date=' + start_date.toYMD() +"&end_date=" + end_date.toYMD()).then(function(response) {
+            if(callback){
+                callback(response.data);
+            }
+        });
+
     };
 
     service.updateCharge = function(charge, callback){
@@ -156,7 +183,9 @@ chargeList.factory('accountService', function($http) {
             service.authOptions.loggedIn[0].title=service.capitalize(service.user.name);
         }
         if(service.loggedIn) {
-            service.getCharges(function (data) {
+            var lastMonth = new Date();
+            lastMonth.setMonth(lastMonth.getMonth()-2);
+            service.getChargesBetweenDates(lastMonth,new Date(),function (data) {
                 service.charges = data;
                 for (charge in service.charges) {
                     service.charges[charge].date = new Date(service.charges[charge].date);
