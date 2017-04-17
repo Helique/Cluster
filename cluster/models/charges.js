@@ -34,10 +34,12 @@ charges.getRange = function(user, start_date, end_date, callback){
        " INNER JOIN " + dbconfig.users_table + " ON " +
        dbconfig.users_table + ".id=" + dbconfig.charges_table + ".user_id " +
        "WHERE " + dbconfig.users_table + ".id=? AND " +
-       dbconfig.users_table + ".date BETWEEN ? and ?";
+       dbconfig.charges_table + ".date BETWEEN ? and ?";
 
     var data = [user.id, start_date, end_date];
+    console.log(data);
     var rows = connection.query(getQuery, data, function (err, rows) {
+        if (err) console.log(err);
         return callback(rows);
     });
 };
