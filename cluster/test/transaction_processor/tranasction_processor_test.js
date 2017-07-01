@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-var transactionProcessor = require("../../helpers/transaction_processor");
+var transactionProcessor = require("../../helpers/transactions/processor");
 var fs = require("fs");
 
 describe("Transaction Processor", function() {
