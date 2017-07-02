@@ -43,7 +43,7 @@ function createBanks(callback) {
 
 function createBankAccounts(callback) {
   connection.query('\
-  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.bank_accounts_table + '` ( \
+  CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.accounts_table + '` ( \
       `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
       PRIMARY KEY (`id`), \
       `user_id` INT UNSIGNED NOT NULL, \
@@ -53,7 +53,6 @@ function createBankAccounts(callback) {
       `collection_count` BIGINT UNSIGNED DEFAULT 0 \
   )', callback);
 }
-
 
 function createCharges(callback) {
   connection.query('\
@@ -88,7 +87,8 @@ function createUsers(callback) {
       `createdOn` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
       PRIMARY KEY (`id`), \
       UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-      UNIQUE INDEX `name_UNIQUE` (`name`) \
+      UNIQUE INDEX `name_UNIQUE` (`name`), \
+      UNIQUE INDEX `email_UNIQUE` (`email`) \
   )', callback);
 }
 

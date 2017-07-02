@@ -8,17 +8,18 @@ var dbconfig = require('../config/credentials/database');
 var init_db = require('./initialize_database');
 
 var connection = mysql.createConnection(dbconfig.connection);
+connection.query('DROP database finance;', function(err, results){
+  connection.query('CREATE DATABASE ' + dbconfig.database, function(err, results) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Database created successfully");
+    connection.end();
 
-connection.query('CREATE DATABASE ' + dbconfig.database, function(err, results) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log("Database created successfully");
-  connection.end();
-
-  init_db(function(err, result) {
-    if (err) console.log(err);
-    else console.log("Database initialized successfully");
-    process.exit();
+    init_db(function(err, result) {
+      if (err) console.log(err);
+      else console.log("Database initialized successfully");
+      process.exit();
+    });
   });
 });
