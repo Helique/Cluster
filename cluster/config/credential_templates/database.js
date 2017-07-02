@@ -9,7 +9,7 @@ module.exports = {
   'regex_table': 'regex',
   'charges_table': 'charges',
   'users_table': 'users',
-  'bank_accounts_table': 'bank_accounts',
+  'accounts_table': 'bank_accounts',
   'banks_table': 'banks',
   'review_table': 'reviews',
   'goal_table': 'goals',

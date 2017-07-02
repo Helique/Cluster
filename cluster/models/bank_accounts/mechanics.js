@@ -7,7 +7,7 @@ var bank = dbconfig.banks["Mechanics Bank"];
 function add(user, bankInfo, callback) {
   // INSERT INTO bankaccounts
   connection.query("INSERT INTO " + dbconfig.database + "." +
-    dbconfig.bank_accounts_table + " (bank_id, user_id) VALUES (?, ?)",
+    dbconfig.accounts_table + " (bank_id, user_id) VALUES (?, ?)",
     [bank.id, user.id], callback);
 }
 

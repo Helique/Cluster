@@ -21,7 +21,6 @@ function add(user, bankInfo, callback) {
 
 function getAll(user, callback) {
   // SELECT bankAccounts.* FROM bankAccounts INNER JOIN users ON bankAccounts.user_id=?
-
   console.log("SELECT * FROM " + dbconfig.database + "." +
     dbconfig.bank_accounts_table + " WHERE user_id=?");
   connection.query("SELECT * FROM " + dbconfig.database + "." +

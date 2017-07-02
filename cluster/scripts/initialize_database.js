@@ -37,14 +37,15 @@ function createBanks(callback) {
   CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.banks_table + '` ( \
       `id` INT UNSIGNED NOT NULL, \
       PRIMARY KEY (`id`), \
-      `name` TEXT NOT NULL \
+      `name` CHAR(60) NOT NULL, \
+      UNIQUE INDEX `name_UNIQUE` (`name`) \
   )', callback);
 }
 
 function createBankAccounts(callback) {
   connection.query('\
   CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.accounts_table + '` ( \
-      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+      `id` INT UNSIGNED NOT NULL, \
       PRIMARY KEY (`id`), \
       `user_id` INT UNSIGNED NOT NULL, \
       FOREIGN KEY(user_id) REFERENCES ' + dbconfig.database + "." + dbconfig.users_table + '(id), \

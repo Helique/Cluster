@@ -24,7 +24,7 @@ function updateTransactions(user) {
       var cmd = './helpers/transactions/scripts/getTransactionsSierra.sh';
 
       var today = new Date();
-      var filename = "Sierra" + today.getFullYear() +"_" + (today.getMonth() + 1) +"_"+ today.getDate() +"_"+today.getHours()+"_"+today.getMinutes()+"_"+today.getSeconds()+".qfx"
+      var filename = "Sierra" + today.getFullYear() + "_" + (today.getMonth() + 1) +"_"+ today.getDate() +"_"+today.getHours()+"_"+today.getMinutes()+"_"+today.getSeconds()+".qfx"
       //var filename = "Sierra" + count + ".qfx";
 
       var process = childProcess.spawn(cmd, [filename]);
