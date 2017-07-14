@@ -2,10 +2,12 @@ var user_model = require("../../models/users");
 var expect = require("chai").expect
 
 describe("User Model", function(){
+  var createdUserID = 0;
   describe("Create new User", function(){
     it("Creates new users with unique ID's", function(done){
       user_model.newUser("testUsername1","testPassword1","test@test.com", (res)=>{
-        expect(res.id).is.equal(1);
+        expect(res.id).is.above(0);
+        createdUserID = res.id;
         done();
       });
     });
@@ -28,7 +30,7 @@ describe("User Model", function(){
   describe("Find a User by Username",function(){
     it("Finds a User from Username", function(done){
       user_model.findByUsername("testUsername1", function(res){
-        expect(res.id).is.equal(1);
+        expect(res.id).is.equal(createdUserID);
         expect(res.name).is.equal("testUsername1");
         expect(res.email).is.equal("test@test.com");
         expect(res).to.property("passhash");
@@ -43,11 +45,11 @@ describe("User Model", function(){
       });
     });
   });
-  
+
   describe("Find a User by Id",function(){
     it("Finds a User from Id", function(done){
-      user_model.findById(1, function(res){
-        expect(res.id).is.equal(1);
+      user_model.findById(createdUserID, function(res){
+        expect(res.id).is.equal(createdUserID);
         expect(res.name).is.equal("testUsername1");
         expect(res.email).is.equal("test@test.com");
         expect(res).to.property("passhash");
@@ -56,7 +58,7 @@ describe("User Model", function(){
       });
     });
     it("Returns Error on Unregistered User", function(done){
-      user_model.findById(2, function(res){
+      user_model.findById(createdUserID+1, function(res){
         expect(res).is.equal(user_model.errors.userNotFound);
         done();
       });

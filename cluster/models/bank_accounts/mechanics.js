@@ -4,11 +4,11 @@ var connection = mysql.createConnection(dbconfig.connection);
 
 var bank = dbconfig.banks["Mechanics Bank"];
 
-function add(user, bankInfo, callback) {
+function add(user, bankInfo, accountNumber, callback) {
   // INSERT INTO bankaccounts
   connection.query("INSERT INTO " + dbconfig.database + "." +
-    dbconfig.accounts_table + " (bank_id, user_id) VALUES (?, ?)",
-    [bank.id, user.id], callback);
+    dbconfig.accounts_table + " (id, bank_id, user_id) VALUES (?, ?, ?)",
+    [accountNumber, bank.id, user.id], callback);
 }
 
 

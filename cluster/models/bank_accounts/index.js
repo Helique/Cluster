@@ -5,32 +5,63 @@ var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
 var transactionsManager = require("../../helpers/transactions/manager")
 
+errors = {
+  bankUnsupported: {error: "Unsupported Bank."},
+  accountInUse: {error: "Account id in Use."},
+  userNotFound: {error: "User not found."}
+};
 
-function add(user, bankInfo, callback) {
+function add(user, bankInfo, accountNumber, callback) {
   var name = bankInfo.name;
   if (name == "Mechanics Bank") {
-    Mechanics.add(user, bankInfo, callback);
+    Mechanics.add(user, bankInfo, accountNumber, function (err, rows) {
+      if (err) {
+        if(err.message.search("PRIMARY") >= 0){
+          return callback(errors.accountInUse);
+        }
+        if(err.message.search("ER_NO_REFERENCED_ROW_2") >= 0){
+          return callback(errors.userNotFound);
+        }
+        return callback(err);
+      } else {
+        return callback({id: accountNumber});
+      }
+    });
   }
   if (name == "Sierra Central") {
-    Sierra.add(user, bankInfo, callback);
+    Sierra.add(user, bankInfo, accountNumber, function (err, rows) {
+      if (err) {
+        if(err.message.search("PRIMARY") >= 0){
+          return callback(errors.accountInUse);
+        }
+        if(err.message.search("ER_NO_REFERENCED_ROW_2") >= 0){
+          return callback(errors.userNotFound);
+        }
+        callback(err);
+      } else {
+        return callback({id: accountNumber});
+      }
+    });
   }
   else {
-    callback(new Error("Bank named " + name + " not supported"));
+    return callback(errors.bankUnsupported);
   }
 }
 
 function getAll(user, callback) {
-  // SELECT bankAccounts.* FROM bankAccounts INNER JOIN users ON bankAccounts.user_id=?
-  console.log("SELECT * FROM " + dbconfig.database + "." +
-    dbconfig.bank_accounts_table + " WHERE user_id=?");
   connection.query("SELECT * FROM " + dbconfig.database + "." +
-    dbconfig.bank_accounts_table + " WHERE user_id=?", [user.id], callback);
+    dbconfig.accounts_table + " WHERE user_id=?", [user.id], function(err, rows){
+      if (err) {
+        return callback(err);
+      } else {
+        return callback(rows);
+      }
+    });
 }
 
 function update(user, callback) {
-
   connection.query("SELECT DISTINCT bank_id FROM " + dbconfig.database + "." +
-   dbconfig.bank_accounts_table + " WHERE user_id=?", [user.id], function(err, results) {
+   dbconfig.accounts_table + " WHERE user_id=?", [user.id], function(err, results) {
      results.forEach(function(result) {
        transactionsManager.updateTransactions(user, result.bank_id);
      });
@@ -47,5 +78,6 @@ module.exports = {
   add: add,
   getAll: getAll,
   update: update,
-  onVerification: onVerification
+  onVerification: onVerification,
+  errors: errors
 };
