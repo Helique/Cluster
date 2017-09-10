@@ -1,8 +1,8 @@
 var bank_model = require("../../models/banks");
 var expect = require("chai").expect
-
-testBank1 = {id: 95959, name: "FakeBank#1"}
-testBank2 = {id: 65656, name: "FakeBank#2"}
+var mock_data = require("../fixtures/testing_data.json")
+var testBank1 = mock_data.testBank1;
+var testBank2 = mock_data.testBank2;
 
 describe("Bank Model", function(){
   describe("newBank", function(){

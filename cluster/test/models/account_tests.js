@@ -2,14 +2,15 @@ var account_model = require("../../models/bank_accounts");
 var user_model = require("../../models/users");
 var bank_model = require("../../models/banks");
 var expect = require("chai").expect;
+var mock_data = require("../fixtures/testing_data.json")
 
-user = {name: "accountTest", password:"what the heck?", email:"account@test.com"}
-user2 = {name: "accountTest2", password:"what the heck?2", email:"account@test.com2"}
-fakeUser = {id: 49, name: "accountTestFake", password:"fake", email:"account@fake.com"}
-bankInfo = {id: 97878, name: "Sierra Central"}
-unsuportedBankInfo = {id: 95333, name: "FakeBank"}
-testBankAccount = {id: 19504}
-testBankAccount2 = {id: 19503}
+var user = mock_data.user
+var user2 = mock_data.user2
+var fakeUser = mock_data.fakeUser
+var bankInfo = mock_data.bankInfo
+var unsuportedBankInfo = mock_data.unsuportedBankInfo
+var testBankAccount = mock_data.testBankAccount1
+var testBankAccount2 = mock_data.testBankAccount2
 
 describe("Account Model", function(){
   before(function(done) {

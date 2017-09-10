@@ -1,0 +1,11 @@
+{
+  "user": {"name": "accountTest", "password":"what the heck?", "email":"account@test.com"},
+  "user2": {"name": "accountTest2", "password":"what the heck?2", "email":"account@test.com2"},
+  "fakeUser": {"id": 49, "name": "accountTestFake", "password":"fake", "email":"account@fake.com"},
+  "bankInfo": {"id": 97878, "name": "Sierra Central"},
+  "unsuportedBankInfo": {"id": 95333, "name": "FakeBank"},
+  "testBankAccount1": {"id": 19504},
+  "testBankAccount2": {"id": 19503},
+  "testBank1": {"id": 95959, "name": "FakeBank#1"},
+  "testBank2": {"id": 65656, "name": "FakeBank#2"}
+}
