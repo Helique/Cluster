@@ -62,6 +62,15 @@ charges.update = function(user, charge_id, category_id, callback){
     }
 };
 
+charges.createTransaction = function performQuery(data, callback) {
+  var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (user_id, bank_id, account_id, account_type, " +
+  "description, charge, memo, fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+  connection.query(insertQuery, data, function(err, result) {
+    if (err) { callback(err, null); }
+    else { callback(null, result); }
+  });
+}
+
 charges.saveTransactions = function (data, user, callback) {
 
     var transactions = data.transactions;
@@ -70,14 +79,7 @@ charges.saveTransactions = function (data, user, callback) {
     var account_type = data.account_type;
     var user_id = user.id;
 
-    function performQuery(data, callback) {
-      var insertQuery = "INSERT IGNORE INTO " + dbconfig.charges_table + " (user_id, bank_id, account_id, account_type, " +
-      "description, charge, memo, fitid, category_id, date, acc_balance) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-      connection.query(insertQuery, data, function(err, result) {
-        if (err) { console.log(err); callback(null, null); }
-        else { callback(null, result); }
-      });
-    }
+
 
     var totalSpent = 0, datas = [];
     for (var trans in transactions) {
@@ -97,7 +99,7 @@ charges.saveTransactions = function (data, user, callback) {
         totalSpent += trnamt;
     }
 
-    async.map(datas, performQuery, function(err, results) {
+    async.map(datas, this.createTransaction, function(err, results) {
       if (err) {
         console.log(err);
       }

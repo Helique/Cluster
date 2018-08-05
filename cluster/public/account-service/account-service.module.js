@@ -26,6 +26,8 @@ chargeList.factory('accountService', function($http) {
     service.categories = [];
     service.charges = [];
     service.user = {};
+    service.start_date;
+    service.end_date;
     service.capitalize = function(txt){
         console.log(txt);
         if(txt == null)
@@ -140,6 +142,24 @@ chargeList.factory('accountService', function($http) {
 
     };
 
+    service.updateChargesBetweenDates = function(start_date, end_date){
+      if(start_date != undefined){
+        service.start_date = start_date;
+      }
+      if(end_date != undefined){
+        service.end_date = end_date;
+      }
+      console.log(service.start_date);
+      console.log(service.end_date);
+
+      service.getChargesBetweenDates(service.start_date, service.end_date, function (data) {
+        service.charges = data;
+        for (charge in service.charges) {
+            service.charges[charge].date = new Date(service.charges[charge].date);
+        }
+      });
+    };
+
     service.updateCharge = function(charge, callback){
         $http.post('/api/1.0/charge', charge).then(function(response) {
             if(callback)
@@ -185,7 +205,9 @@ chargeList.factory('accountService', function($http) {
         if(service.loggedIn) {
             var lastMonth = new Date();
             lastMonth.setMonth(lastMonth.getMonth()-2);
-            service.getChargesBetweenDates(lastMonth,new Date(),function (data) {
+            service.start_date = lastMonth;
+            service.end_date = new Date();
+            service.getChargesBetweenDates(service.start_date, service.end_date,function (data) {
                 service.charges = data;
                 for (charge in service.charges) {
                     service.charges[charge].date = new Date(service.charges[charge].date);

@@ -55,12 +55,16 @@
             <input type="checkbox" ng-model="$ctrl.onlyUncategorized">
             <br>
             <label>Start Date:</label>
-            <input type="date"
+            <input type="date" ng-change="$ctrl.accountService.updateChargesBetweenDates(startDate, endDate)"
                    ng-model="startDate"/>
+           <!-- <input type="date"
+                  ng-model="startDate"/> -->
             <br>
             <label>End Date:</label>
-            <input type="date"
+            <input type="date" ng-change="$ctrl.accountService.updateChargesBetweenDates(startDate, endDate)"
                    ng-model="endDate"/>
+           <!-- <input type="date"
+                  ng-model="endDate"/> -->
         </div>
 
         <div>
