@@ -4,7 +4,7 @@ var connection = mysql.createConnection(dbconfig.connection);
 
 var bank = dbconfig.banks["Sierra Central"];
 
-function add(user, bankInfo, accountNumber, callback) {
+function add(user, bankName, accountNumber, callback) {
   // INSERT INTO bankaccounts
   connection.query("INSERT INTO " + dbconfig.database + "." +
     dbconfig.accounts_table + " (id, bank_id, user_id) VALUES (?, ?, ?)",

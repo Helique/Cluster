@@ -1,8 +1,8 @@
 #!/bin/bash
 cd casperjs
-casperjs sierra_central.js
+casperjs sierra_central.js new_transactions.qfx
 cd ..
-mkdir transactions
+mkdir -p transactions
 mv casperjs/*.qfx transactions/
 node scripts/process_transactions.js
 mkdir -p saved_transactions

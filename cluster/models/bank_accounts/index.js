@@ -11,40 +11,39 @@ errors = {
   userNotFound: {error: "User not found."}
 };
 
-function add(user, bankInfo, accountNumber, callback) {
-  var name = bankInfo.name;
-  if (name == "Mechanics Bank") {
-    Mechanics.add(user, bankInfo, accountNumber, function (err, rows) {
+function add(user, bankName, accountNumber, callback) {
+  if (bankName == "Mechanics Bank") {
+    Mechanics.add(user, bankName, accountNumber, function (err, rows) {
       if (err) {
         if(err.message.search("PRIMARY") >= 0){
-          return callback(errors.accountInUse);
+          return callback(errors.accountInUse, null);
         }
         if(err.message.search("ER_NO_REFERENCED_ROW_2") >= 0){
-          return callback(errors.userNotFound);
+          return callback(errors.userNotFound, null);
         }
-        return callback(err);
+        return callback(err, null);
       } else {
-        return callback({id: accountNumber});
+        return callback(null, {id: accountNumber});
       }
     });
   }
-  if (name == "Sierra Central") {
-    Sierra.add(user, bankInfo, accountNumber, function (err, rows) {
+  if (bankName == "Sierra Central") {
+    Sierra.add(user, bankName, accountNumber, function (err, rows) {
       if (err) {
         if(err.message.search("PRIMARY") >= 0){
-          return callback(errors.accountInUse);
+          return callback(errors.accountInUse, null);
         }
         if(err.message.search("ER_NO_REFERENCED_ROW_2") >= 0){
-          return callback(errors.userNotFound);
+          return callback(errors.userNotFound, null);
         }
-        callback(err);
+        callback(err, null);
       } else {
-        return callback({id: accountNumber});
+        return callback(null, {id: accountNumber});
       }
     });
   }
   else {
-    return callback(errors.bankUnsupported);
+    return callback(errors.bankUnsupported, null);
   }
 }
 
@@ -52,9 +51,9 @@ function getAll(user, callback) {
   connection.query("SELECT * FROM " + dbconfig.database + "." +
     dbconfig.accounts_table + " WHERE user_id=?", [user.id], function(err, rows){
       if (err) {
-        return callback(err);
+        return callback(err, null);
       } else {
-        return callback(rows);
+        return callback(null, rows);
       }
     });
 }
